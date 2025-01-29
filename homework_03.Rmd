@@ -1,0 +1,49 @@
+---
+title: "homework_03"
+author: "Lamija Semic"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+1.
+
+First String    Second      1.22      3.4
+Second          More Text   1.555555  2.2220
+Third           x           3         124
+
+find: "\s{2,}
+
+replace: ","
+
+solution:
+
+First String,Second,1.22,3.4
+Second,More Text,1.555555,2.2220
+Third,x,3,124
+
+
+found every space that was 2 or more characters and replaced with comma
+
+
+2.
+
+Ballif, Bryan, University of Vermont
+Ellison, Aaron, Harvard Forest
+Record, Sydne, Bryn Mawr
+
+find: "(\w+, )(\w+, )(\w.*)"
+replace: "\2\1(\3)"
+
+
+solution:
+
+Bryan, Ballif, (University of Vermont)
+Aaron, Ellison, (Harvard Forest)
+Sydne, Record, (Bryn Mawr)
+
+
+
+3. 
+0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3
+
+
