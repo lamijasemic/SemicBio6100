@@ -21,9 +21,8 @@ First String,Second,1.22,3.4
 Second,More Text,1.555555,2.2220
 Third,x,3,124
 
-
-found every space that was 2 or more characters and replaced with comma
-
+explanation: I found every space that was 2 or more characters and replaced them with a comma
+------------------------------------------------------------------------------------------------
 
 2.
 
@@ -41,9 +40,100 @@ Bryan, Ballif, (University of Vermont)
 Aaron, Ellison, (Harvard Forest)
 Sydne, Record, (Bryn Mawr)
 
+explanation: I created 3 groups and swapped their orders, adding parentheses in the third group
 
+------------------------------------------------------------------------------------------------
 
 3. 
 0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3
+
+find: "000"
+replace: "\n\t000"
+
+solution:
+
+	0001 Georgia Horseshoe.mp3 
+	0002 Billy In The Lowground.mp3 
+	0003 Winder Slide.mp3 
+	0004 Walking Cane.mp3
+	
+explanation: I put each song title into its own row.
+
+------------------------------------------------------------------------------------------------
+
+4. 
+	0001 Georgia Horseshoe.mp3 
+	0002 Billy In The Lowground.mp3 
+	0003 Winder Slide.mp3 
+	0004 Walking Cane.mp3
+	
+find: "(\d{4}) (.*)\.mp3"
+replace: "\2\1.mp3"
+
+solution:
+
+  Georgia Horseshoe0001.mp3 
+	Billy In The Lowground0002.mp3 
+	Winder Slide0003.mp3 
+	Walking Cane0004.mp3
+
+explanation: I grouped the first four digits of each line and created two groups, swapping their order to put the numbers just before the .mp3 label.
+------------------------------------------------------------------------------------------------
+
+5. 
+Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3
+Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55
+
+find: "(\w)\w*,(\w+),.*?,"
+replace:"\1_\2"
+
+solution:
+C_pennsylvanicus44
+C_herculeanus3
+M_punctiventris4
+L_neoniger55
+
+explanation: I grouped the first and second group, replacing the space between them with an underline. I also matched and removed all the words after the first comma.
+------------------------------------------------------------------------------------------------
+
+6. 
+Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3
+Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55
+
+
+find: "(\w)\w*,(\w{4})\w*,.*?,"
+replace:"\1_\2,"
+
+solution:
+C_penn,44
+C_herc,3
+M_punc,4
+L_neon,55
+
+explanation: used the same code as in #5, but isolated the first four digits of second phrase
+------------------------------------------------------------------------------------------------
+
+7. 
+Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3
+Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55
+
+find: "(\w{3})\w*,(\w{3})\w*,(\d+\.\d+),(\d+)"
+replace: "\1\2 \4,\3"
+
+solution:
+
+Campen 44,10.2
+Camher 3,10.5
+Myrpun 4,12.2
+Lasneo 55,3.3
+
+
+explanation: used the same code as in #6, but isolated the first 3 digits of each phrase, and each set of numbers before and after the decimal to swap them.
 
 
