@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lamija Semic" />
 
-<meta name="date" content="2025-01-29" />
+<meta name="date" content="2025-01-30" />
 
 <title>homework_03</title>
 
@@ -270,7 +270,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">homework_03</h1>
 <h4 class="author">Lamija Semic</h4>
-<h4 class="date">2025-01-29</h4>
+<h4 class="date">2025-01-30</h4>
 
 </div>
 
@@ -280,7 +280,7 @@ $(document).ready(function () {
 </ol>
 <p>First String Second 1.22 3.4 Second More Text 1.555555 2.2220 Third x
 3 124</p>
-<p>find: “</p>
+<pre><code>find: &quot;\s{2,}&quot;</code></pre>
 <p>replace: “,”</p>
 <p>solution:</p>
 <p>First String,Second,1.22,3.4 Second,More Text,1.555555,2.2220
@@ -295,7 +295,8 @@ replaced them with a comma</h2>
 </ol>
 <p>Ballif, Bryan, University of Vermont Ellison, Aaron, Harvard Forest
 Record, Sydne, Bryn Mawr</p>
-<p>find: “(+, )(+, )(.*)” replace: “\2\1(\3)”</p>
+<pre><code>find: &quot;(\w+, )(\w+, )(\w.*)&quot;
+replace: &quot;\2\1(\3)&quot;</code></pre>
 <p>solution:</p>
 <p>Bryan, Ballif, (University of Vermont) Aaron, Ellison, (Harvard
 Forest) Sydne, Record, (Bryn Mawr)</p>
@@ -309,7 +310,8 @@ parentheses in the third group</h2>
 <li>0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003
 Winder Slide.mp3 0004 Walking Cane.mp3</li>
 </ol>
-<p>find: “000” replace: “00”</p>
+<pre><code>find: &quot;000&quot;
+replace: &quot;\n\t000&quot;</code></pre>
 <p>solution:</p>
 <pre><code>0001 Georgia Horseshoe.mp3 
 0002 Billy In The Lowground.mp3 
@@ -321,10 +323,10 @@ class="section level2">
 <h2>explanation: I put each song title into its own row.</h2>
 <ol start="4" style="list-style-type: decimal">
 <li>0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003
-Winder Slide.mp3 0004 Walking Cane.mp3</li>
+Winder Slide.mp3 0004 Walking Cane.mp3
+<code>find: "(\d{4}) (.*)\.mp3" replace: "\2\1.mp3"</code>
+solution:</li>
 </ol>
-<p>find: “() (.*).mp3” replace: “\2\1.mp3”</p>
-<p>solution:</p>
 <p>Georgia Horseshoe0001.mp3 Billy In The Lowground0002.mp3 Winder
 Slide0003.mp3 Walking Cane0004.mp3</p>
 </div>
@@ -338,7 +340,8 @@ the .mp3 label.</h2>
 <li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
 </ol>
-<p>find: “(),(+),.*?,” replace:“\1_\2”</p>
+<pre><code>find: &quot;(\w)\w*,(\w+),.*?,&quot;
+replace:&quot;\1_\2&quot;</code></pre>
 <p>solution: C_pennsylvanicus44 C_herculeanus3 M_punctiventris4
 L_neoniger55</p>
 </div>
@@ -352,7 +355,8 @@ words after the first comma.</h2>
 <li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
 </ol>
-<p>find: “(),(),.*?,” replace:“\1_\2,”</p>
+<pre><code>find: &quot;(\w)\w*,(\w{4})\w*,.*?,&quot;
+replace:&quot;\1_\2,&quot;</code></pre>
 <p>solution: C_penn,44 C_herc,3 M_punc,4 L_neon,55</p>
 </div>
 <div
@@ -364,7 +368,8 @@ four digits of second phrase</h2>
 <li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
 </ol>
-<p>find: “(),(),(.),()” replace: “\1\2 \4,\3”</p>
+<pre><code>find: &quot;(\w{3})\w*,(\w{3})\w*,(\d+\.\d+),(\d+)&quot;
+replace: &quot;\1\2 \4,\3&quot;</code></pre>
 <p>solution:</p>
 <p>Campen 44,10.2 Camher 3,10.5 Myrpun 4,12.2 Lasneo 55,3.3</p>
 </div>

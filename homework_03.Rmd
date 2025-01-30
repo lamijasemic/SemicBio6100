@@ -5,13 +5,16 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+
 1.
 
 First String    Second      1.22      3.4
 Second          More Text   1.555555  2.2220
 Third           x           3         124
 
+```
 find: "\s{2,}"
+```
 
 replace: ","
 
@@ -29,10 +32,10 @@ explanation: I found every space that was 2 or more characters and replaced them
 Ballif, Bryan, University of Vermont
 Ellison, Aaron, Harvard Forest
 Record, Sydne, Bryn Mawr
-
+```
 find: "(\w+, )(\w+, )(\w.*)"
 replace: "\2\1(\3)"
-
+```
 
 solution:
 
@@ -45,10 +48,10 @@ explanation: I created 3 groups and swapped their orders, adding parentheses in 
 
 3. 
 0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3
-
+```
 find: "000"
 replace: "\n\t000"
-
+```
 solution:
 
 	0001 Georgia Horseshoe.mp3 
@@ -64,10 +67,10 @@ explanation: I put each song title into its own row.
 	0002 Billy In The Lowground.mp3 
 	0003 Winder Slide.mp3 
 	0004 Walking Cane.mp3
-	
+	```
 find: "(\d{4}) (.*)\.mp3"
 replace: "\2\1.mp3"
-
+```
 solution:
 
   Georgia Horseshoe0001.mp3 
@@ -83,10 +86,10 @@ Camponotus,pennsylvanicus,10.2,44
 Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4
 Lasius,neoniger,3.3,55
-
+```
 find: "(\w)\w*,(\w+),.*?,"
 replace:"\1_\2"
-
+```
 solution:
 C_pennsylvanicus44
 C_herculeanus3
@@ -102,10 +105,10 @@ Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4
 Lasius,neoniger,3.3,55
 
-
+```
 find: "(\w)\w*,(\w{4})\w*,.*?,"
 replace:"\1_\2,"
-
+```
 solution:
 C_penn,44
 C_herc,3
@@ -121,9 +124,10 @@ Camponotus,herculeanus,10.5,3
 Myrmica,punctiventris,12.2,4
 Lasius,neoniger,3.3,55
 
+```
 find: "(\w{3})\w*,(\w{3})\w*,(\d+\.\d+),(\d+)"
 replace: "\1\2 \4,\3"
-
+```
 solution:
 
 Campen 44,10.2
