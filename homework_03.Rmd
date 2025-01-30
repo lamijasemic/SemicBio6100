@@ -11,7 +11,7 @@ First String    Second      1.22      3.4
 Second          More Text   1.555555  2.2220
 Third           x           3         124
 
-find: "\s{2,}
+find: "\s{2,}"
 
 replace: ","
 
@@ -112,7 +112,7 @@ C_herc,3
 M_punc,4
 L_neon,55
 
-explanation: used the same code as in #5, but isolated the first four digits of second phrase
+explanation: I used the same code as in #5, but isolated the first four digits of second phrase
 ------------------------------------------------------------------------------------------------
 
 7. 
@@ -132,6 +132,6 @@ Myrpun 4,12.2
 Lasneo 55,3.3
 
 
-explanation: used the same code as in #6, but isolated the first 3 digits of each phrase, and each set of numbers before and after the decimal to swap them.
+explanation: I used the same code as in #6, but isolated the first 3 digits of each phrase, and each set of numbers before and after the decimal to swap them.
 -----------------------------------------------------------------------------------------------
 
