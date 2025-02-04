@@ -1,5 +1,5 @@
 ---
-title: "homework_02"
+title: "Homework 02"
 author: "Lamija Semic"
 date: "`r Sys.Date()`"
 output: 
@@ -11,6 +11,12 @@ output:
 
 
 ```{r setup, include=FALSE}
+
+background
+
+
+
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
