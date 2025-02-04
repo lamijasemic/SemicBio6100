@@ -11,9 +11,11 @@ First String    Second      1.22      3.4
 Second          More Text   1.555555  2.2220
 Third           x           3         124
 
+```
 find: "\s{2,}
 
 replace: ","
+```
 
 solution:
 
@@ -31,12 +33,12 @@ Ballif, Bryan, University of Vermont
 Ellison, Aaron, Harvard Forest
 Record, Sydne, Bryn Mawr
 
+```
 find: "(\w+, )(\w+, )(\w.*)"
 replace: "\2\1(\3)"
-
+```
 
 solution:
-
 Bryan, Ballif, (University of Vermont)
 Aaron, Ellison, (Harvard Forest)
 Sydne, Record, (Bryn Mawr)
@@ -46,10 +48,10 @@ Sydne, Record, (Bryn Mawr)
 3. 
 0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3
 
-
+```
 find: "000*"
 replace: "\n\t000"
-
+```
 
 solution:
 
@@ -59,4 +61,98 @@ solution:
 	0004 Walking Cane.mp3
 	
 	
-	4. 
+4. 
+
+0001 Georgia Horseshoe.mp3 
+0002 Billy In The Lowground.mp3 
+0003 Winder Slide.mp3 
+0004 Walking Cane.mp3
+
+```
+find: “() (.*).mp3” 
+replace: “\2\1.mp3”
+```
+
+solution:
+
+Georgia Horseshoe0001.mp3 Billy In The Lowground0002.mp3 Winder Slide0003.mp3 Walking Cane0004.mp3
+
+explanation: I identified the first four digits of each line by using “”, and “(.*).mp3” to grab the rest of the expression. I created two groups and swapped their order to put the numbers just before the .mp3 label by replacing with “\2\1.mp3”.
+
+------------------------------------------------------------------------------------------------
+
+5. 
+Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
+
+```
+find: “(),(+),.*?,” 
+replace:“\1_\2”
+```
+
+solution: C_pennsylvanicus44 C_herculeanus3 M_punctiventris4 L_neoniger55
+
+explanation: I identified the first and second group by searching “(),(+),.*?,“. I replaced the space between them with an underline and removed all the digits between the first and second comma by replacing with”\1_\2”.
+
+------------------------------------------------------------------------------------------------
+
+6. 
+Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
+
+```
+find: “(),(),.*?,” 
+replace:“\1_\2,”
+```
+
+solution: C_penn,44 C_herc,3 M_punc,4 L_neon,55
+
+explanation: I used the same code as in #5, but isolated the first four digits of second phrase by searching “()”.
+
+------------------------------------------------------------------------------------------------
+
+7. 
+Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
+
+```
+find: “(),(),(.),()” 
+replace: “\1\2 \4,\3”
+```
+
+solution:
+
+Campen 44,10.2 Camher 3,10.5 Myrpun 4,12.2 Lasneo 55,3.3
+
+explanation: I used the same code as in #6, but isolated the first 3 digits of each phrase by searching “()”. I reversed each set of numbers by searching “(.),()” and replacing with “\1\2 \4,\3”.
+
+-----------------------------------------------------------------------------------------------
+8.
+id target_name pathogen_binary sampling_date site_code field_id bombus_spp host_plant bee_caste sampling_event pathogen_load 1 BQCV 1 9/9/2020 BOST 6 imp*atiens solidago worker 4 2414168.805 3 BQCV NA 9/10/2020 MUDGE 18 impatiens c!rown vetch worker 4 760793.2324 4 BQCV NA 9/10/2020 MUDGE 11 im&patiens crown
+vetch    worker  4   0
+5   BQCV    NA  9/9/2020    BOST    11  impatiens   sol)idago   male    4   0
+6   BQCV    NA  9/10/2020   CIND    14  -i@mp#a^tiens   k*no%t
+w%eed    worker  4   124236.7921
+8   BQCV    NA  9/10/2020   MUDGE   4   impatiens   crown
+v
+et(ch worker 4 413814.5638 10 BQCV 1 9/10/2020 CIND 13 impatiens  red
+clover  worker  4   1028831.605
+11  BQCV    NA  7/7/2020    BOST    38  impatiens   red
+clover  worker  2   307696378.8
+12  BQCV    NA  9/10/2020   MUDGE   5   _imp*atiens c+rown
+vetch    worker  4   0
+13  BQCV    1   9/9/2020    BOST    12  impatien+s  solid#ago   male    4   311873.0526
+15  BQCV    0   9/9/2020    BOST    18  _impatiens  solidag)o   worker  4   0
+16  BQCV    NA  9/9/2020    BOST    23  impati+e(ns
+s!olidago   male    4   1674951.391
+17  BQCV    NA  9/10/2020   CIND    20  impa#tiens  red cl
+over worker 4 3214026.976 18 BQCV 1 9/10/2020 CIND 11 i^m+patiens bi_rdsfoo_t worker 4 995592.63 19 BQCV NA 9/10/2020 CIND 17 i%mpatiens red+ @clover worker 4 0 20 BQCV 1 9/10/2020 CIND 16 imp(atiens #red c_lover worker 4 200804.8542 21 BQCV 1 9/9/2020 BOST 17 impatiens solid@ago worker 4 228085.8104 22 BQCV 1 9/9/2020 BOST 7 impati^ens solidago worker 4 7261151.315 23 BQCV NA 7/7/2020 COL 22 )impati^ens red clov#er worker 2 817906.8276 24 BQCV 1 7/7/2020 BOST 45 impatiens red_ cl)over worker 2 858658.6884
+
+```
+find: “[^\w\s]|_” 
+replace:
+```
+solution:
+
+id targetname pathogenbinary samplingdate sitecode fieldid bombusspp hostplant beecaste samplingevent pathogenload 1 BQCV 1 992020 BOST 6 impatiens solidago worker 4 2414168805 3 BQCV NA 9102020 MUDGE 18 impatiens crown vetch worker 4 7607932324 4 BQCV NA 9102020 MUDGE 11 impatiens crown vetch worker 4 0 5 BQCV NA 992020 BOST 11 impatiens solidago male 4 0 6 BQCV NA 9102020 CIND 14 impatiens knot weed worker 4 1242367921 8 BQCV NA 9102020 MUDGE 4 impatiens crown vetch worker 4 4138145638 10 BQCV 1 9102020 CIND 13 impatiens red clover worker 4 1028831605 11 BQCV NA 772020 BOST 38 impatiens red clover worker 2 3076963788 12 BQCV NA 9102020 MUDGE 5 impatiens crown vetch worker 4 0 13 BQCV 1 992020 BOST 12 impatiens solidago male 4 3118730526 15 BQCV 0 992020 BOST 18 impatiens solidago worker 4 0 16 BQCV NA 992020 BOST 23 impatiens solidago male 4 1674951391 17 BQCV NA 9102020 CIND 20 impatiens red clover worker 4 3214026976 18 BQCV 1 9102020 CIND 11 impatiens birdsfoot worker 4 99559263 19 BQCV NA 9102020 CIND 17 impatiens red clover worker 4 0 20 BQCV 1 9102020 CIND 16 impatiens red clover worker 4 2008048542 21 BQCV 1 992020 BOST 17 impatiens solidago worker 4 2280858104 22 BQCV 1 992020 BOST 7 impatiens solidago worker 4 7261151315 23 BQCV NA 772020 COL 22 impatiens red clover worker 2 8179068276 24 BQCV 1 772020 BOST 45 impatiens red clover worker 2 8586586884
+
+explanation: I removed all the special characters, including underscores by searching “[^\w\s]|_” and replacing with an empty field.
+
+
