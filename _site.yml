@@ -8,6 +8,6 @@ navbar:
     - text: "About"
       href: about.html
     - text: "homework_02"
-      href: _02.html
+      href: homework_02.html
     - text: "homework_03"
-      href: _03.html
+      href: homework_03.html
