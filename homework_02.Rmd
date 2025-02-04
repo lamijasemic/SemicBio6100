@@ -1,7 +1,7 @@
 ---
-title: "Homework_02"
+title: "homework_02"
 author: "Lamija Semic"
-date: "`r Sys.Date()`"
+date: "1/22/25"
 output: 
   html_document: 
     highlight: espresso
