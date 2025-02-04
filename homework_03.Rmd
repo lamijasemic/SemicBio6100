@@ -1,9 +1,12 @@
 ---
-title: "homework03"
+title: "homework_03"
 author: "Lamija Semic"
-date: "`r Sys.Date()`"
-output: html_document
+date: "1/30/25"
+output: 
+  html_document: 
+    highlight: haddock
 ---
+
 
 **1.**
 
@@ -65,6 +68,7 @@ replace: "\n000"
 **explanation:**
 I identified each song title by searching "000*". I made a new line for each song and ensured that they retained their zeros by replacing with "\n000".
 
+
 **4.** 
 
 0001 Georgia Horseshoe.mp3 
@@ -100,6 +104,7 @@ I identified the first and second group by searching “(),(+),.*?,“. I replac
 
 
 **6.**
+
 Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
 
 ```
@@ -115,6 +120,7 @@ I used the same code as in #5, but isolated the first four digits of second phra
 
 
 **7.**
+
 Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
 
 ```
@@ -130,6 +136,7 @@ I used the same code as in #6, but isolated the first 3 digits of each phrase by
 
 
 **8.**
+
 id target_name pathogen_binary sampling_date site_code field_id bombus_spp host_plant bee_caste sampling_event pathogen_load 1 BQCV 1 9/9/2020 BOST 6 imp*atiens solidago worker 4 2414168.805 3 BQCV NA 9/10/2020 MUDGE 18 impatiens c!rown vetch worker 4 760793.2324 4 BQCV NA 9/10/2020 MUDGE 11 im&patiens crown
 vetch    worker  4   0
 5   BQCV    NA  9/9/2020    BOST    11  impatiens   sol)idago   male    4   0
@@ -154,11 +161,11 @@ over worker 4 3214026.976 18 BQCV 1 9/10/2020 CIND 11 i^m+patiens bi_rdsfoo_t wo
 find: “[^\w\s]|_” 
 replace:
 ```
+
 **solution:**
 
 id targetname pathogenbinary samplingdate sitecode fieldid bombusspp hostplant beecaste samplingevent pathogenload 1 BQCV 1 992020 BOST 6 impatiens solidago worker 4 2414168805 3 BQCV NA 9102020 MUDGE 18 impatiens crown vetch worker 4 7607932324 4 BQCV NA 9102020 MUDGE 11 impatiens crown vetch worker 4 0 5 BQCV NA 992020 BOST 11 impatiens solidago male 4 0 6 BQCV NA 9102020 CIND 14 impatiens knot weed worker 4 1242367921 8 BQCV NA 9102020 MUDGE 4 impatiens crown vetch worker 4 4138145638 10 BQCV 1 9102020 CIND 13 impatiens red clover worker 4 1028831605 11 BQCV NA 772020 BOST 38 impatiens red clover worker 2 3076963788 12 BQCV NA 9102020 MUDGE 5 impatiens crown vetch worker 4 0 13 BQCV 1 992020 BOST 12 impatiens solidago male 4 3118730526 15 BQCV 0 992020 BOST 18 impatiens solidago worker 4 0 16 BQCV NA 992020 BOST 23 impatiens solidago male 4 1674951391 17 BQCV NA 9102020 CIND 20 impatiens red clover worker 4 3214026976 18 BQCV 1 9102020 CIND 11 impatiens birdsfoot worker 4 99559263 19 BQCV NA 9102020 CIND 17 impatiens red clover worker 4 0 20 BQCV 1 9102020 CIND 16 impatiens red clover worker 4 2008048542 21 BQCV 1 992020 BOST 17 impatiens solidago worker 4 2280858104 22 BQCV 1 992020 BOST 7 impatiens solidago worker 4 7261151315 23 BQCV NA 772020 COL 22 impatiens red clover worker 2 8179068276 24 BQCV 1 772020 BOST 45 impatiens red clover worker 2 8586586884
 
 **explanation:** 
 I removed all the special characters, including underscores by searching “[^\w\s]|_” and replacing with an empty field.
-
 
