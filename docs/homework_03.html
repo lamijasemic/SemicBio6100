@@ -13,7 +13,7 @@
 
 <meta name="date" content="2025-02-04" />
 
-<title>homework_03</title>
+<title>homework03</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -268,125 +268,112 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">homework_03</h1>
+<h1 class="title toc-ignore">homework03</h1>
 <h4 class="author">Lamija Semic</h4>
 <h4 class="date">2025-02-04</h4>
 
 </div>
 
 
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
+<p><strong>1.</strong></p>
 <p>First String Second 1.22 3.4 Second More Text 1.555555 2.2220 Third x
 3 124</p>
-<pre><code>find: &quot;\s{2,}
+<pre><code>find: &quot;\s{2,}&quot;
 
 replace: &quot;,&quot;</code></pre>
-<p>solution:</p>
-<p>First String,Second,1.22,3.4 Second,More Text,1.555555,2.2220
-Third,x,3,124</p>
-<p>found every space that was 2 or more characters and replaced with
-comma</p>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
+<p><strong>solution:</strong> First String,Second,1.22,3.4 Second,More
+Text,1.555555,2.2220 Third,x,3,124</p>
+<p><strong>explanation:</strong> found every space that was 2 or more
+characters and replaced with comma by searching “” and replacing with
+“,”.</p>
+<p><strong>2.</strong></p>
 <p>Ballif, Bryan, University of Vermont Ellison, Aaron, Harvard Forest
 Record, Sydne, Bryn Mawr</p>
 <pre><code>find: &quot;(\w+, )(\w+, )(\w.*)&quot;
 replace: &quot;\2\1(\3)&quot;</code></pre>
-<p>solution: Bryan, Ballif, (University of Vermont) Aaron, Ellison,
-(Harvard Forest) Sydne, Record, (Bryn Mawr)</p>
-<ol start="3" style="list-style-type: decimal">
-<li>0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003
-Winder Slide.mp3 0004 Walking Cane.mp3</li>
-</ol>
+<p><strong>solution:</strong> Bryan, Ballif, (University of Vermont)
+Aaron, Ellison, (Harvard Forest) Sydne, Record, (Bryn Mawr)</p>
+<p><strong>explanation:</strong> created 3 groups by searching “(+)”. I
+swapped the first 2 groups and added parenthesis to the 3rd by replacing
+with “\2\1(\3)”.</p>
+<p><strong>3.</strong></p>
+<p>0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003
+Winder Slide.mp3 0004 Walking Cane.mp3</p>
 <pre><code>find: &quot;000*&quot;
-replace: &quot;\n\t000&quot;</code></pre>
-<p>solution:</p>
-<pre><code>0001 Georgia Horseshoe.mp3 
-0002 Billy In The Lowground.mp3 
-0003 Winder Slide.mp3 
-0004 Walking Cane.mp3</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li></li>
-</ol>
+replace: &quot;\n000&quot;</code></pre>
+<p><strong>solution:</strong> 0001 Georgia Horseshoe.mp3 0002 Billy In
+The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3</p>
+<p><strong>explanation:</strong> I identified each song title by
+searching “000*“. I made a new line for each song and ensured that they
+retained their zeros by replacing with”“.</p>
+<p><strong>4.</strong></p>
 <p>0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003
 Winder Slide.mp3 0004 Walking Cane.mp3</p>
 <pre><code>find: “() (.*).mp3” 
 replace: “\2\1.mp3”</code></pre>
-<p>solution:</p>
-<p>Georgia Horseshoe0001.mp3 Billy In The Lowground0002.mp3 Winder
-Slide0003.mp3 Walking Cane0004.mp3</p>
-<p>explanation: I identified the first four digits of each line by using
-“”, and “(.*).mp3” to grab the rest of the expression. I created two
-groups and swapped their order to put the numbers just before the .mp3
-label by replacing with “\2\1.mp3”.</p>
-<hr />
-<ol start="5" style="list-style-type: decimal">
-<li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
-Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
-</ol>
+<p><strong>solution:</strong> Georgia Horseshoe0001.mp3 Billy In The
+Lowground0002.mp3 Winder Slide0003.mp3 Walking Cane0004.mp3</p>
+<p><strong>explanation:</strong> I identified the first four digits of
+each line by using “”, and “(.*).mp3” to grab the rest of the
+expression. I created two groups and swapped their order to put the
+numbers just before the .mp3 label by replacing with “\2\1.mp3”.</p>
+<p><strong>5.</strong></p>
+<p>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
+Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</p>
 <pre><code>find: “(),(+),.*?,” 
 replace:“\1_\2”</code></pre>
-<p>solution: C_pennsylvanicus44 C_herculeanus3 M_punctiventris4
-L_neoniger55</p>
-<p>explanation: I identified the first and second group by searching
-“(),(+),.*?,“. I replaced the space between them with an underline and
-removed all the digits between the first and second comma by replacing
-with”\1_\2”.</p>
-<hr />
-<ol start="6" style="list-style-type: decimal">
-<li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
-Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
-</ol>
+<p><strong>solution:</strong> C_pennsylvanicus44 C_herculeanus3
+M_punctiventris4 L_neoniger55</p>
+<p><strong>explanation:</strong> I identified the first and second group
+by searching “(),(+),.*?,“. I replaced the space between them with an
+underline and removed all the digits between the first and second comma
+by replacing with”\1_\2”.</p>
+<p><strong>6.</strong> Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55</p>
 <pre><code>find: “(),(),.*?,” 
 replace:“\1_\2,”</code></pre>
-<p>solution: C_penn,44 C_herc,3 M_punc,4 L_neon,55</p>
-<p>explanation: I used the same code as in #5, but isolated the first
-four digits of second phrase by searching “()”.</p>
-<hr />
-<ol start="7" style="list-style-type: decimal">
-<li>Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3
-Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55</li>
-</ol>
+<p><strong>solution:</strong> C_penn,44 C_herc,3 M_punc,4 L_neon,55</p>
+<p><strong>explanation:</strong> I used the same code as in #5, but
+isolated the first four digits of second phrase by searching “()”.</p>
+<p><strong>7.</strong> Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55</p>
 <pre><code>find: “(),(),(.),()” 
 replace: “\1\2 \4,\3”</code></pre>
-<p>solution:</p>
-<p>Campen 44,10.2 Camher 3,10.5 Myrpun 4,12.2 Lasneo 55,3.3</p>
-<p>explanation: I used the same code as in #6, but isolated the first 3
-digits of each phrase by searching “()”. I reversed each set of numbers
-by searching “(.),()” and replacing with “\1\2 \4,\3”.</p>
-<hr />
-<ol start="8" style="list-style-type: decimal">
-<li>id target_name pathogen_binary sampling_date site_code field_id
-bombus_spp host_plant bee_caste sampling_event pathogen_load 1 BQCV 1
-9/9/2020 BOST 6 imp<em>atiens solidago worker 4 2414168.805 3 BQCV NA
-9/10/2020 MUDGE 18 impatiens c!rown vetch worker 4 760793.2324 4 BQCV NA
-9/10/2020 MUDGE 11 im&amp;patiens crown vetch worker 4 0 5 BQCV NA
-9/9/2020 BOST 11 impatiens sol)idago male 4 0 6 BQCV NA 9/10/2020 CIND
-14 -<a href="mailto:i@mp" class="email">i@mp</a>#a^tiens k</em>no%t
-w%eed worker 4 124236.7921 8 BQCV NA 9/10/2020 MUDGE 4 impatiens crown v
-et(ch worker 4 413814.5638 10 BQCV 1 9/10/2020 CIND 13 impatiens red
-clover worker 4 1028831.605 11 BQCV NA 7/7/2020 BOST 38 impatiens red
-clover worker 2 307696378.8 12 BQCV NA 9/10/2020 MUDGE 5 _imp*atiens
-c+rown vetch worker 4 0 13 BQCV 1 9/9/2020 BOST 12 impatien+s solid#ago
-male 4 311873.0526 15 BQCV 0 9/9/2020 BOST 18 <em>impatiens solidag)o
-worker 4 0 16 BQCV NA 9/9/2020 BOST 23 impati+e(ns s!olidago male 4
-1674951.391 17 BQCV NA 9/10/2020 CIND 20 impa#tiens red cl over worker 4
-3214026.976 18 BQCV 1 9/10/2020 CIND 11 i^m+patiens bi_rdsfoo_t worker 4
-995592.63 19 BQCV NA 9/10/2020 CIND 17 i%mpatiens red+ <span
-class="citation">@clover</span> worker 4 0 20 BQCV 1 9/10/2020 CIND 16
-imp(atiens #red c_lover worker 4 200804.8542 21 BQCV 1 9/9/2020 BOST 17
-impatiens <a href="mailto:solid@ago" class="email">solid@ago</a> worker
-4 228085.8104 22 BQCV 1 9/9/2020 BOST 7 impati^ens solidago worker 4
-7261151.315 23 BQCV NA 7/7/2020 COL 22 )impati^ens red clov#er worker 2
-817906.8276 24 BQCV 1 7/7/2020 BOST 45 impatiens red</em> cl)over worker
-2 858658.6884</li>
-</ol>
+<p><strong>solution:</strong> Campen 44,10.2 Camher 3,10.5 Myrpun 4,12.2
+Lasneo 55,3.3</p>
+<p><strong>explanation:</strong> I used the same code as in #6, but
+isolated the first 3 digits of each phrase by searching “()”. I reversed
+each set of numbers by searching “(.),()” and replacing with “\1\2
+\4,\3”.</p>
+<p><strong>8.</strong> id target_name pathogen_binary sampling_date
+site_code field_id bombus_spp host_plant bee_caste sampling_event
+pathogen_load 1 BQCV 1 9/9/2020 BOST 6 imp<em>atiens solidago worker 4
+2414168.805 3 BQCV NA 9/10/2020 MUDGE 18 impatiens c!rown vetch worker 4
+760793.2324 4 BQCV NA 9/10/2020 MUDGE 11 im&amp;patiens crown vetch
+worker 4 0 5 BQCV NA 9/9/2020 BOST 11 impatiens sol)idago male 4 0 6
+BQCV NA 9/10/2020 CIND 14 -<a href="mailto:i@mp"
+class="email">i@mp</a>#a^tiens k</em>no%t w%eed worker 4 124236.7921 8
+BQCV NA 9/10/2020 MUDGE 4 impatiens crown v et(ch worker 4 413814.5638
+10 BQCV 1 9/10/2020 CIND 13 impatiens red clover worker 4 1028831.605 11
+BQCV NA 7/7/2020 BOST 38 impatiens red clover worker 2 307696378.8 12
+BQCV NA 9/10/2020 MUDGE 5 _imp*atiens c+rown vetch worker 4 0 13 BQCV 1
+9/9/2020 BOST 12 impatien+s solid#ago male 4 311873.0526 15 BQCV 0
+9/9/2020 BOST 18 <em>impatiens solidag)o worker 4 0 16 BQCV NA 9/9/2020
+BOST 23 impati+e(ns s!olidago male 4 1674951.391 17 BQCV NA 9/10/2020
+CIND 20 impa#tiens red cl over worker 4 3214026.976 18 BQCV 1 9/10/2020
+CIND 11 i^m+patiens bi_rdsfoo_t worker 4 995592.63 19 BQCV NA 9/10/2020
+CIND 17 i%mpatiens red+ <span class="citation">@clover</span> worker 4 0
+20 BQCV 1 9/10/2020 CIND 16 imp(atiens #red c_lover worker 4 200804.8542
+21 BQCV 1 9/9/2020 BOST 17 impatiens <a href="mailto:solid@ago"
+class="email">solid@ago</a> worker 4 228085.8104 22 BQCV 1 9/9/2020 BOST
+7 impati^ens solidago worker 4 7261151.315 23 BQCV NA 7/7/2020 COL 22
+)impati^ens red clov#er worker 2 817906.8276 24 BQCV 1 7/7/2020 BOST 45
+impatiens red</em> cl)over worker 2 858658.6884</p>
 <pre><code>find: “[^\w\s]|_” 
 replace:</code></pre>
-<p>solution:</p>
+<p><strong>solution:</strong></p>
 <p>id targetname pathogenbinary samplingdate sitecode fieldid bombusspp
 hostplant beecaste samplingevent pathogenload 1 BQCV 1 992020 BOST 6
 impatiens solidago worker 4 2414168805 3 BQCV NA 9102020 MUDGE 18
@@ -408,9 +395,9 @@ worker 4 2280858104 22 BQCV 1 992020 BOST 7 impatiens solidago worker 4
 7261151315 23 BQCV NA 772020 COL 22 impatiens red clover worker 2
 8179068276 24 BQCV 1 772020 BOST 45 impatiens red clover worker 2
 8586586884</p>
-<p>explanation: I removed all the special characters, including
-underscores by searching “[^\w\s]|_” and replacing with an empty
-field.</p>
+<p><strong>explanation:</strong> I removed all the special characters,
+including underscores by searching “[^\w\s]|_” and replacing with an
+empty field.</p>
 
 
 
