@@ -3,7 +3,7 @@ title: "homework_02"
 author: "Lamija Semic"
 date: "1/22/25"
 output: 
-  html_document: 
+  html_document:
     highlight: espresso
 ---
 
