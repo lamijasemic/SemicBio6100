@@ -146,8 +146,8 @@ value: "aphid"
 ```
 
 **5**
-Question: 
 ```r
+Question: 
 Use R to create a vector of all of the integers from 1 to 100 that are not divisible by 2, 3, or 7.
 
 integers <- 1:100
