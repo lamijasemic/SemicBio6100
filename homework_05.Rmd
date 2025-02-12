@@ -1,0 +1,91 @@
+---
+title: "homework_04"
+author: "Lamija Semic"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+**1**
+
+``` {r}
+random_value <- runif(1, min=3, max=10)
+n_dims <- as.integer(random_value)
+print(n_dims)
+# value = 3
+
+my_vec <- 1:n_dims^2
+
+sample(x=my_vec)
+
+
+m <- matrix(data=my_vec,nrow=n_dims)
+print(m)
+
+transposed_matrix <- t(m)
+print(transposed_matrix)
+
+# switches order of columns and rows
+
+rowSums(m)
+# values = 12,15,18
+
+rowMeans(m)
+# values = 4,5,6
+
+eigen(m)
+
+# $values: these numbers are all eigen values of the matrix.
+
+# $vectors: each column of these numbers are eigen vectors, that correspond with the eigen values.
+
+#value
+typeof(1.611684e+01)
+
+#vector
+typeof(-0.4645473)
+
+
+
+
+
+
+``` 
+
+**2**
+
+``` {r}
+my_matrix <- matrix(runif(16), nrow=4, ncol=4)
+print(my_matrix)
+
+
+my_logical <- runif(100) 
+my_logical <- sample(c(TRUE, FALSE), 100, replace = TRUE)
+print(my_logical)
+
+
+my_letters <- sample(letters, 26)
+print(my_letters)
+
+
+new_list <- c(my_matrix[2,2], my_logical[2], my_letters[1])
+print(new_list)
+
+typeof(my_matrix[2,2])
+typeof(my_logical[2])
+typeof(my_logical[2])
+
+typeof(new_list)
+
+```
+
+``` {r}
+
+my_unis <- runif(26, min=0, max=10)
+print(my_unis)
+
+my_letters <- sample(LETTERS, 26)
+
+
+my_unis <- sample(1:nrow(df)
+
+```
