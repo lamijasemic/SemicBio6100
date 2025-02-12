@@ -45,10 +45,6 @@ typeof(1.611684e+01)
 typeof(-0.4645473)
 
 
-
-
-
-
 ``` 
 
 **2**
@@ -78,14 +74,14 @@ typeof(new_list)
 
 ```
 
+
+**3**
+
 ``` {r}
 
 my_unis <- runif(26, min=0, max=10)
 print(my_unis)
 
 my_letters <- sample(LETTERS, 26)
-
-
-my_unis <- sample(1:nrow(df)
 
 ```
