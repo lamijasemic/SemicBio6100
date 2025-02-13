@@ -6,13 +6,16 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "About"
-      href: about.html
-    - text: "homework_02"
-      href: homework_02.html
-    - text: "homework_03"
-      href: homework_03.html
-    - text: "homework_04"
-      href: homework_04.html
+      href: index.html
+    - text: homeworks
+      href: "index.html"
+      menu:
+    -   text: "homework_02"
+        href: homeworks/index.html
+    -   text: "homework_03"
+        href: homeworks/index.html
+    -   text: "homework_04"
+        href: homeworks/index.html
 output:
   html_document:
     css: "darkly.min.css"
