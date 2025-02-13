@@ -1,7 +1,7 @@
 ---
 title: "homework_03"
 author: "Lamija Semic"
-date: "1/30/25"
+date: "`1/30/2`5"
 output: 
   html_document: 
     highlight: haddock
