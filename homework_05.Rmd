@@ -1,7 +1,7 @@
 ---
 title: "homework_05"
 author: "Lamija Semic"
-date: "`r Sys.Date()`"
+date: "`(2/12/25)`"
 output: html_document
 ---
 
