@@ -286,59 +286,90 @@ $(document).ready(function () {
 <pre class="r"><code>random_value &lt;- runif(1, min=3, max=10)
 n_dims &lt;- as.integer(random_value)
 print(n_dims)</code></pre>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 9</code></pre>
 <pre class="r"><code># value = 3
 
 my_vec &lt;- 1:n_dims^2
 
 sample(x=my_vec)</code></pre>
-<pre><code>##  [1] 11 25 10  6  2 23  5  7  3 13  8  4 22 19 24 17 20 18 15  9  1 16 21 12 14</code></pre>
+<pre><code>##  [1] 36  1 10 14  3 17 21 23 75 64 40 13 35 12 71 22 53 66 41 46 72 31 42  5 39
+## [26] 70 28 50 47 18 69 77 51 60 48 73 24 11  4 63 80 26 33  2 52 29 32  8 76 34
+## [51] 44 62  9 37 38 61 78 20 65 54 15 27 56 19 81 30 79 57  7 43  6 68 25 49 74
+## [76] 16 58 45 59 67 55</code></pre>
 <pre class="r"><code>m &lt;- matrix(data=my_vec,nrow=n_dims)
 print(m)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    6   11   16   21
-## [2,]    2    7   12   17   22
-## [3,]    3    8   13   18   23
-## [4,]    4    9   14   19   24
-## [5,]    5   10   15   20   25</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    1   10   19   28   37   46   55   64   73
+##  [2,]    2   11   20   29   38   47   56   65   74
+##  [3,]    3   12   21   30   39   48   57   66   75
+##  [4,]    4   13   22   31   40   49   58   67   76
+##  [5,]    5   14   23   32   41   50   59   68   77
+##  [6,]    6   15   24   33   42   51   60   69   78
+##  [7,]    7   16   25   34   43   52   61   70   79
+##  [8,]    8   17   26   35   44   53   62   71   80
+##  [9,]    9   18   27   36   45   54   63   72   81</code></pre>
 <pre class="r"><code>transposed_matrix &lt;- t(m)
 print(transposed_matrix)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    2    3    4    5
-## [2,]    6    7    8    9   10
-## [3,]   11   12   13   14   15
-## [4,]   16   17   18   19   20
-## [5,]   21   22   23   24   25</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    1    2    3    4    5    6    7    8    9
+##  [2,]   10   11   12   13   14   15   16   17   18
+##  [3,]   19   20   21   22   23   24   25   26   27
+##  [4,]   28   29   30   31   32   33   34   35   36
+##  [5,]   37   38   39   40   41   42   43   44   45
+##  [6,]   46   47   48   49   50   51   52   53   54
+##  [7,]   55   56   57   58   59   60   61   62   63
+##  [8,]   64   65   66   67   68   69   70   71   72
+##  [9,]   73   74   75   76   77   78   79   80   81</code></pre>
 <pre class="r"><code># switches order of columns and rows
 
 rowSums(m)</code></pre>
-<pre><code>## [1] 55 60 65 70 75</code></pre>
+<pre><code>## [1] 333 342 351 360 369 378 387 396 405</code></pre>
 <pre class="r"><code># values = 12,15,18
 
 rowMeans(m)</code></pre>
-<pre><code>## [1] 11 12 13 14 15</code></pre>
+<pre><code>## [1] 37 38 39 40 41 42 43 44 45</code></pre>
 <pre class="r"><code># values = 4,5,6
 
 eigen(m)</code></pre>
 <pre><code>## eigen() decomposition
 ## $values
-## [1]  6.864208e+01+0.000000e+00i -3.642081e+00+0.000000e+00i
-## [3] -1.555400e-17+1.391983e-15i -1.555400e-17-1.391983e-15i
-## [5]  3.963361e-16+0.000000e+00i
+## [1]  3.817315e+02+0.000000e+00i -1.273146e+01+0.000000e+00i
+## [3]  4.000653e-15+1.623317e-14i  4.000653e-15-1.623317e-14i
+## [5] -5.260057e-15+0.000000e+00i -3.647307e-15+0.000000e+00i
+## [7]  1.389140e-15+3.341360e-15i  1.389140e-15-3.341360e-15i
+## [9]  3.382382e-15+0.000000e+00i
 ## 
 ## $vectors
-##              [,1]           [,2]                   [,3]                   [,4]
-## [1,] 0.3800509+0i -0.76703416+0i -0.1859466-0.21684199i -0.1859466+0.21684199i
-## [2,] 0.4124552+0i -0.48590617+0i -0.2959020+0.26835896i -0.2959020-0.26835896i
-## [3,] 0.4448594+0i -0.20477817+0i  0.7604833+0.00000000i  0.7604833+0.00000000i
-## [4,] 0.4772637+0i  0.07634982+0i  0.1105255+0.06229107i  0.1105255-0.06229107i
-## [5,] 0.5096680+0i  0.35747782+0i -0.3891603-0.11380804i -0.3891603+0.11380804i
-##                [,5]
-## [1,] -0.30527604+0i
-## [2,] -0.09821628+0i
-## [3,]  0.88398820+0i
-## [4,] -0.25222342+0i
-## [5,] -0.22827246+0i</code></pre>
+##               [,1]           [,2]                    [,3]
+##  [1,] 0.3013398+0i -0.61304415+0i -0.33246212+0.32259593i
+##  [2,] 0.3091842+0i -0.49982372+0i  0.10020367-0.43461436i
+##  [3,] 0.3170286+0i -0.38660329+0i  0.25457851+0.07142431i
+##  [4,] 0.3248730+0i -0.27338285+0i  0.05774642+0.03816254i
+##  [5,] 0.3327174+0i -0.16016242+0i -0.09476824-0.04367018i
+##  [6,] 0.3405618+0i -0.04694198+0i  0.46661976+0.00000000i
+##  [7,] 0.3484062+0i  0.06627845+0i -0.44306274-0.11854940i
+##  [8,] 0.3562506+0i  0.17949888+0i  0.00740724+0.25395412i
+##  [9,] 0.3640950+0i  0.29271932+0i -0.01626251-0.08930295i
+##                          [,4]           [,5]            [,6]
+##  [1,] -0.33246212-0.32259593i  0.23143467+0i  0.123963025+0i
+##  [2,]  0.10020367+0.43461436i  0.30238710+0i  0.175275681+0i
+##  [3,]  0.25457851-0.07142431i -0.54652509+0i -0.670598274+0i
+##  [4,]  0.05774642-0.03816254i  0.17044177+0i  0.562160595+0i
+##  [5,] -0.09476824+0.04367018i -0.54201250+0i -0.356897133+0i
+##  [6,]  0.46661976+0.00000000i  0.19978463+0i  0.065358163+0i
+##  [7,] -0.44306274+0.11854940i -0.18529470+0i  0.009103642+0i
+##  [8,]  0.00740724-0.25395412i  0.39804018+0i  0.207459460+0i
+##  [9,] -0.01626251+0.08930295i -0.02825606+0i -0.115825159+0i
+##                           [,7]                     [,8]           [,9]
+##  [1,] -0.05781268+0.003146203i -0.05781268-0.003146203i -0.08049472+0i
+##  [2,]  0.07009226+0.049020387i  0.07009226-0.049020387i -0.03741828+0i
+##  [3,]  0.44470262-0.129548806i  0.44470262+0.129548806i -0.41209329+0i
+##  [4,] -0.16353851+0.308697036i -0.16353851-0.308697036i  0.31859497+0i
+##  [5,] -0.20963328-0.348413461i -0.20963328+0.348413461i  0.48098642+0i
+##  [6,] -0.53842175+0.000000000i -0.53842175+0.000000000i  0.34895955+0i
+##  [7,]  0.09407180+0.172702476i  0.09407180-0.172702476i -0.37447494+0i
+##  [8,]  0.38698720-0.086255784i  0.38698720+0.086255784i -0.43640390+0i
+##  [9,] -0.02644766+0.030651949i -0.02644766-0.030651949i  0.19234418+0i</code></pre>
 <pre class="r"><code># $values: these numbers are all eigen values of the matrix.
 
 # $vectors: each column of these numbers are eigen vectors, that correspond with the eigen values.
@@ -352,30 +383,30 @@ typeof(-0.4645473)</code></pre>
 <p><strong>2</strong></p>
 <pre class="r"><code>my_matrix &lt;- matrix(runif(16), nrow=4, ncol=4)
 print(my_matrix)</code></pre>
-<pre><code>##           [,1]        [,2]      [,3]      [,4]
-## [1,] 0.7024354 0.273235366 0.7978465 0.5109170
-## [2,] 0.6581777 0.328711787 0.0246140 0.2071187
-## [3,] 0.5153997 0.008553291 0.4715747 0.3311940
-## [4,] 0.6669079 0.258414411 0.3585487 0.1224282</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]
+## [1,] 0.0748091 0.8817858 0.3935076 0.1524649
+## [2,] 0.7125702 0.1710961 0.7947715 0.6817682
+## [3,] 0.4244999 0.9750454 0.9638092 0.2008546
+## [4,] 0.7650263 0.3104438 0.2120051 0.8881736</code></pre>
 <pre class="r"><code>my_logical &lt;- runif(100) 
 my_logical &lt;- sample(c(TRUE, FALSE), 100, replace = TRUE)
 print(my_logical)</code></pre>
-<pre><code>##   [1] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE
-##  [13]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE
-##  [25]  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE
-##  [37]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [49]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE
-##  [61] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [73] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE
-##  [85]  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+<pre><code>##   [1] FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
+##  [13] FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE
+##  [25]  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+##  [37]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+##  [49]  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+##  [61]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE
+##  [73]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE
+##  [85] FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE
 ##  [97] FALSE FALSE  TRUE FALSE</code></pre>
 <pre class="r"><code>my_letters &lt;- sample(letters, 26)
 print(my_letters)</code></pre>
-<pre><code>##  [1] &quot;p&quot; &quot;v&quot; &quot;s&quot; &quot;z&quot; &quot;l&quot; &quot;o&quot; &quot;w&quot; &quot;k&quot; &quot;n&quot; &quot;i&quot; &quot;m&quot; &quot;g&quot; &quot;u&quot; &quot;y&quot; &quot;e&quot; &quot;q&quot; &quot;f&quot; &quot;c&quot; &quot;x&quot;
-## [20] &quot;j&quot; &quot;t&quot; &quot;d&quot; &quot;b&quot; &quot;h&quot; &quot;a&quot; &quot;r&quot;</code></pre>
+<pre><code>##  [1] &quot;c&quot; &quot;m&quot; &quot;a&quot; &quot;z&quot; &quot;u&quot; &quot;g&quot; &quot;e&quot; &quot;o&quot; &quot;b&quot; &quot;j&quot; &quot;n&quot; &quot;w&quot; &quot;h&quot; &quot;f&quot; &quot;q&quot; &quot;s&quot; &quot;d&quot; &quot;p&quot; &quot;t&quot;
+## [20] &quot;y&quot; &quot;v&quot; &quot;i&quot; &quot;r&quot; &quot;k&quot; &quot;x&quot; &quot;l&quot;</code></pre>
 <pre class="r"><code>new_list &lt;- c(my_matrix[2,2], my_logical[2], my_letters[1])
 print(new_list)</code></pre>
-<pre><code>## [1] &quot;0.328711787005886&quot; &quot;TRUE&quot;              &quot;p&quot;</code></pre>
+<pre><code>## [1] &quot;0.171096099540591&quot; &quot;FALSE&quot;             &quot;c&quot;</code></pre>
 <pre class="r"><code>typeof(my_matrix[2,2])</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <pre class="r"><code>typeof(my_logical[2])</code></pre>
@@ -387,11 +418,10 @@ print(new_list)</code></pre>
 <p><strong>3</strong></p>
 <pre class="r"><code>my_unis &lt;- runif(26, min=0, max=10)
 print(my_unis)</code></pre>
-<pre><code>##  [1] 8.790893347 4.170845551 3.831889105 0.005659747 4.268085379 2.952086318
-##  [7] 3.625007898 1.404804150 0.434080674 8.268500955 6.736720647 9.624809513
-## [13] 3.967362840 1.637682682 4.668875090 6.425126663 9.430228081 1.651532594
-## [19] 3.186127474 8.763360789 2.706927652 8.142611904 6.379222458 1.341012167
-## [25] 5.083803951 3.916070720</code></pre>
+<pre><code>##  [1] 3.0547879 3.2300073 2.6260931 0.7942482 5.3222601 4.7010687 3.1575165
+##  [8] 7.7491868 2.7824341 6.8369486 0.9154057 5.4031533 6.3807387 5.8646392
+## [15] 1.2619032 7.4465434 8.1513831 7.4485250 0.8303108 1.7158893 2.6356091
+## [22] 8.8767443 1.9340464 5.0055402 4.4737793 7.3437764</code></pre>
 <pre class="r"><code>my_letters &lt;- sample(LETTERS, 26)</code></pre>
 
 
