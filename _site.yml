@@ -10,8 +10,6 @@ navbar:
     - text: homeworks
       href: "homeworks.html"
       menu:
-        - text: "homework_02"
-          href: homework_02.html
         - text: "homework_03"
           href: homework_03.html
         - text: "homework_04"
