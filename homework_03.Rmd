@@ -14,7 +14,7 @@ First String    Second      1.22      3.4
 Second          More Text   1.555555  2.2220
 Third           x           3         124
 
-```{r}
+```
 find: "\s{2,}"
 
 replace: ","
@@ -36,7 +36,7 @@ Ballif, Bryan, University of Vermont
 Ellison, Aaron, Harvard Forest
 Record, Sydne, Bryn Mawr
 
-``` {r}
+```
 find: "(\w+, )(\w+, )(\w.*)"
 replace: "\2\1(\3)"
 ```
@@ -54,7 +54,7 @@ created 3 groups by searching "(\w+)". I swapped the first 2 groups and added pa
 
 0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3
 
-```{r}
+```
 find: "000*"
 replace: "\n000"
 ```
@@ -76,7 +76,7 @@ I identified each song title by searching "000*". I made a new line for each son
 0003 Winder Slide.mp3 
 0004 Walking Cane.mp3
 
-```{r}
+```
 find: “() (.*).mp3” 
 replace: “\2\1.mp3”
 ```
@@ -91,7 +91,7 @@ Georgia Horseshoe0001.mp3 Billy In The Lowground0002.mp3 Winder Slide0003.mp3 Wa
 
 Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
 
-```{r}
+```
 find: “(),(+),.*?,” 
 replace:“\1_\2”
 ```
@@ -107,7 +107,7 @@ I identified the first and second group by searching “(),(+),.*?,“. I replac
 
 Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
 
-```{r}
+```
 find: “(),(),.*?,” 
 replace:“\1_\2,”
 ```
@@ -123,7 +123,7 @@ I used the same code as in #5, but isolated the first four digits of second phra
 
 Camponotus,pennsylvanicus,10.2,44 Camponotus,herculeanus,10.5,3 Myrmica,punctiventris,12.2,4 Lasius,neoniger,3.3,55
 
-```{r}
+```
 find: “(),(),(.),()” 
 replace: “\1\2 \4,\3”
 ```
@@ -157,7 +157,7 @@ s!olidago   male    4   1674951.391
 17  BQCV    NA  9/10/2020   CIND    20  impa#tiens  red cl
 over worker 4 3214026.976 18 BQCV 1 9/10/2020 CIND 11 i^m+patiens bi_rdsfoo_t worker 4 995592.63 19 BQCV NA 9/10/2020 CIND 17 i%mpatiens red+ @clover worker 4 0 20 BQCV 1 9/10/2020 CIND 16 imp(atiens #red c_lover worker 4 200804.8542 21 BQCV 1 9/9/2020 BOST 17 impatiens solid@ago worker 4 228085.8104 22 BQCV 1 9/9/2020 BOST 7 impati^ens solidago worker 4 7261151.315 23 BQCV NA 7/7/2020 COL 22 )impati^ens red clov#er worker 2 817906.8276 24 BQCV 1 7/7/2020 BOST 45 impatiens red_ cl)over worker 2 858658.6884
 
-```{r}
+```
 find: “[^\w\s]|_” 
 replace:
 ```
