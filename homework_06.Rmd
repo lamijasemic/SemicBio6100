@@ -103,6 +103,3 @@ for (i in octopamine_data) {
 
 ```
 5 samples is the smallest effective size needed to detect a significant pattern between the treatment and control that were originally hypothesized.
-
-
-
