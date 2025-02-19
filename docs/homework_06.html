@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lamija Semic" />
+
+
+<title>homework_06</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="darkly.min.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    homeworks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="homework_03.html">homework_03</a>
+    </li>
+    <li>
+      <a href="homework_04.html">homework_04</a>
+    </li>
+    <li>
+      <a href="homework_05.html">homework_05</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">homework_06</h1>
+<h4 class="author">Lamija Semic</h4>
+<h4 class="date"><code>(2/19/25)</code></h4>
+
+</div>
+
+
+<p>Study: insecticide exposure results in increased levels of
+octopamine, demonstrated by a normal distribution.</p>
+<p><strong>1</strong> - <strong>3</strong></p>
+<pre class="r"><code>treatment &lt;- rnorm(n=30, mean=0, sd=1)
+print(treatment)</code></pre>
+<pre><code>##  [1]  0.34797222  0.85375629 -2.13896418  0.72418974 -1.49133493 -0.13181313
+##  [7] -0.30945771  2.55823388  0.46088936  0.16802229 -0.02445874  0.61454046
+## [13] -0.62240674  1.15263287  1.37429879  0.94323867  1.19303251 -1.60212589
+## [19]  1.26149777 -0.16621780 -0.90489388  0.83067683  0.73622772  1.11121480
+## [25] -1.12727085  1.87783207  1.26963487 -0.41787509  0.05415472 -1.18299958</code></pre>
+<pre class="r"><code>control&lt;- rnorm(n=30, mean=0, sd=1)
+print(control)</code></pre>
+<pre><code>##  [1] -0.58849323 -1.67356301 -0.20676328  0.96145937 -0.43854487 -0.97264459
+##  [7] -1.36268357 -0.00486465  0.90214016 -0.60549513  1.51489020 -0.97122902
+## [13]  1.47565168 -0.59637775  0.12709125 -1.09461024  0.09282890  0.32562923
+## [19] -0.09314998 -0.03729545 -1.26351202  0.07325534  0.25106621 -0.07455218
+## [25]  0.77720975 -0.55004083 -1.06819043  0.01966981  0.68632506 -0.95376143</code></pre>
+<pre class="r"><code>octopamine_data &lt;- c(treatment, control)
+print(octopamine_data)</code></pre>
+<pre><code>##  [1]  0.34797222  0.85375629 -2.13896418  0.72418974 -1.49133493 -0.13181313
+##  [7] -0.30945771  2.55823388  0.46088936  0.16802229 -0.02445874  0.61454046
+## [13] -0.62240674  1.15263287  1.37429879  0.94323867  1.19303251 -1.60212589
+## [19]  1.26149777 -0.16621780 -0.90489388  0.83067683  0.73622772  1.11121480
+## [25] -1.12727085  1.87783207  1.26963487 -0.41787509  0.05415472 -1.18299958
+## [31] -0.58849323 -1.67356301 -0.20676328  0.96145937 -0.43854487 -0.97264459
+## [37] -1.36268357 -0.00486465  0.90214016 -0.60549513  1.51489020 -0.97122902
+## [43]  1.47565168 -0.59637775  0.12709125 -1.09461024  0.09282890  0.32562923
+## [49] -0.09314998 -0.03729545 -1.26351202  0.07325534  0.25106621 -0.07455218
+## [55]  0.77720975 -0.55004083 -1.06819043  0.01966981  0.68632506 -0.95376143</code></pre>
+<pre class="r"><code>octopamine_data &lt;- data.frame(octopamine_data)</code></pre>
+<p>Justifications:</p>
+<ul>
+<li>Sample sizes: 30, minimum sample size needed to make statistically
+statistically significant observations of data.</li>
+<li>Means: 0, mean for normal distribution.</li>
+<li>Variances: 1, sd for normal distribution.</li>
+</ul>
+<p><strong>4</strong> - <strong>5</strong></p>
+<pre class="r"><code>one.way &lt;- aov(treatment ~ control, data = octopamine_data)
+summary(one.way)</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## control      1   0.22  0.2234    0.18  0.675
+## Residuals   28  34.77  1.2418</code></pre>
+<p><strong>6</strong></p>
+<pre class="r"><code>treatmenti &lt;- rnorm(n=10, mean=0, sd=1)
+print(treatment)</code></pre>
+<pre><code>##  [1]  0.34797222  0.85375629 -2.13896418  0.72418974 -1.49133493 -0.13181313
+##  [7] -0.30945771  2.55823388  0.46088936  0.16802229 -0.02445874  0.61454046
+## [13] -0.62240674  1.15263287  1.37429879  0.94323867  1.19303251 -1.60212589
+## [19]  1.26149777 -0.16621780 -0.90489388  0.83067683  0.73622772  1.11121480
+## [25] -1.12727085  1.87783207  1.26963487 -0.41787509  0.05415472 -1.18299958</code></pre>
+<pre class="r"><code>controli&lt;- rnorm(n=10, mean=0, sd=1)
+print(control)</code></pre>
+<pre><code>##  [1] -0.58849323 -1.67356301 -0.20676328  0.96145937 -0.43854487 -0.97264459
+##  [7] -1.36268357 -0.00486465  0.90214016 -0.60549513  1.51489020 -0.97122902
+## [13]  1.47565168 -0.59637775  0.12709125 -1.09461024  0.09282890  0.32562923
+## [19] -0.09314998 -0.03729545 -1.26351202  0.07325534  0.25106621 -0.07455218
+## [25]  0.77720975 -0.55004083 -1.06819043  0.01966981  0.68632506 -0.95376143</code></pre>
+<pre class="r"><code>octopamine_datai &lt;- c(treatmenti, controli)
+print(octopamine_datai)</code></pre>
+<pre><code>##  [1]  1.73133498 -0.31759477 -1.00634008 -0.03841243  0.63349115 -0.63477140
+##  [7]  1.24840588  1.00071125 -1.51966019 -0.02102878  0.45882087 -0.15210662
+## [13]  0.52367974  1.09939073  0.66862386  1.18658651 -1.47921984 -0.01638760
+## [19]  0.30334504  1.02882989</code></pre>
+<pre class="r"><code>octopamine_datai &lt;- data.frame(octopamine_datai)
+
+one.wayi &lt;- aov(treatment ~ control, data = octopamine_datai)
+summary(one.wayi)</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## control      1   0.22  0.2234    0.18  0.675
+## Residuals   28  34.77  1.2418</code></pre>
+<pre class="r"><code>for (i in octopamine_datai) {
+  cat (runif(1), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.6233994</code></pre>
+<pre class="r"><code>for (i in octopamine_datai) {
+  cat (runif(5), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.4788708 0.6793968 0.05958233 0.7845886 0.5000561</code></pre>
+<pre class="r"><code>for (i in octopamine_datai) {
+  cat (runif(10), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.6681584 0.7407974 0.01406061 0.7654655 0.2260594 0.2580092 0.9448208 0.07210103 0.2435636 0.0205195</code></pre>
+<pre class="r"><code>for (i in octopamine_datai) {
+  cat (runif(30), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.2553367 0.2545332 0.4515523 0.7277055 0.0372681 0.4877307 0.7342305 0.473156 0.4257699 0.2892548 0.6884107 0.5166983 0.6696286 0.2175485 0.007395567 0.4973574 0.8920134 0.99016 0.5549085 0.4646657 0.8653137 0.8828538 0.960073 0.5505053 0.7872959 0.5428796 0.7952682 0.6497355 0.843628 0.4892655</code></pre>
+<p>5 samples is the smallest effective size needed to detect a
+significant pattern between the treatment and control.</p>
+<p><strong>7</strong></p>
+<pre class="r"><code>for (i in octopamine_data) {
+  cat (runif(1), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.3997234</code></pre>
+<pre class="r"><code>for (i in octopamine_data) {
+  cat (runif(5), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.5515317 0.6343085 0.1718309 0.5541225 0.1749192</code></pre>
+<pre class="r"><code>for (i in octopamine_data) {
+  cat (runif(10), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.3147727 0.6463954 0.6276114 0.9831983 0.3777061 0.8265572 0.1364754 0.717372 0.3952213 0.4129488</code></pre>
+<pre class="r"><code>for (i in octopamine_data) {
+  cat (runif(30), &quot;\n&quot;)
+}</code></pre>
+<pre><code>## 0.1540643 0.3570721 0.2371736 0.7232806 0.6326627 0.09925786 0.8137379 0.2998497 0.6710656 0.5315907 0.9475109 0.4594011 0.3161354 0.3265228 0.01477093 0.2818369 0.7163621 0.8719929 0.7705654 0.7563912 0.8007697 0.7021759 0.8149238 0.8171935 0.811307 0.3848806 0.7392157 0.4986229 0.4470141 0.1373569</code></pre>
+<p>5 samples is the smallest effective size needed to detect a
+significant pattern between the treatment and control that were
+originally hypothesized.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
