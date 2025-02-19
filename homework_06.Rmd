@@ -16,11 +16,8 @@ print(treatment)
 control<- rnorm(n=30, mean=0, sd=1)
 print(control)
 
-octopamine_data <- c(treatment, control)
+octopamine_data <- data.frame(treatment, control)
 print(octopamine_data)
-
-octopamine_data <- data.frame(octopamine_data)
-
 
 ```
 Justifications:
@@ -44,19 +41,18 @@ summary(one.way)
 
 ```{r}
 
-treatmenti <- rnorm(n=10, mean=0, sd=1)
+treatmenti <- rnorm(n=20, mean=0, sd=1)
 print(treatment)
 
-controli<- rnorm(n=10, mean=0, sd=1)
+controli<- rnorm(n=20, mean=0, sd=1)
 print(control)
 
-octopamine_datai <- c(treatmenti, controli)
+octopamine_datai <- data.frame(treatmenti, controli)
 print(octopamine_datai)
-
-octopamine_datai <- data.frame(octopamine_datai)
 
 one.wayi <- aov(treatment ~ control, data = octopamine_datai)
 summary(one.wayi)
+
 
 
 for (i in octopamine_datai) {
