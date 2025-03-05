@@ -1,0 +1,104 @@
+---
+title: "homework_07"
+author: "Lamija Semic"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+**1**
+
+```{r}
+
+library("tidyverse")
+glimpse(iris)
+
+# 150 observations with 5 variables
+
+
+```
+
+**2**
+
+```{r}
+
+iris1 <- subset(iris, Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width > 2.5)
+glimpse(iris1)
+
+# 56 observation and 5 variables
+```
+
+
+**3**
+
+```{r}
+
+iris2 <- iris1 %>% select(Species, Sepal.Length, Sepal.Width)
+print(iris2)
+
+# 56 observations and 3 variables
+
+```
+
+**4**
+
+``` {r}
+iris3<-iris2 %>%
+arrange(by = desc(Sepal.Length))
+head(iris3)
+
+```
+
+**5**
+
+``` {r}
+iris4<-iris3 %>%
+  mutate(area = Sepal.Length*Sepal.Width)
+  head(iris4)
+
+
+
+
+
+```
+
+**6**
+
+```{r}
+
+iris5 <- iris4 %>%
+  summarize(
+    Average_Sepal.Length = mean(Sepal.Length),
+    Average_Sepal.Width = mean(Sepal.Width),
+    Sample_Size = n()
+)
+print(iris5)
+
+
+
+
+```
+
+**7**
+
+```{r}
+iris6 <- iris4 %>%
+  group_by(Species) %>%
+  summarize(
+    Average_Sepal.Length = mean(Sepal.Length),
+    Average_Sepal.Width = mean(Sepal.Width),
+    Sample_Size = n()
+  )
+print(iris6)
+```
+
+**9**
+
+```{r}
+
+iris_long <- iris %>%
+pivot_longer(cols = -Species, names_to = "Measure", values_to = "Value")
+print(iris_long)
+
+
+```
