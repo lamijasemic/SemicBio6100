@@ -20,6 +20,8 @@ navbar:
           href: homework_06.html
         - text: "homework_07"
           href: homework_07.html
+        - text: "homework_08"
+          href: homework_08
 
 output:
   html_document:
