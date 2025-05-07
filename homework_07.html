@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lamija Semic" />
+
+<meta name="date" content="2025-05-07" />
+
+<title>homework_07</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    homeworks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="homework_03.html">homework_03</a>
+    </li>
+    <li>
+      <a href="homework_04.html">homework_04</a>
+    </li>
+    <li>
+      <a href="homework_05.html">homework_05</a>
+    </li>
+    <li>
+      <a href="homework_06.html">homework_06</a>
+    </li>
+    <li>
+      <a href="homework_07.html">homework_07</a>
+    </li>
+    <li>
+      <a href="homework_08.html">homework_08</a>
+    </li>
+    <li>
+      <a href="Upscaler.R.Zip.html">Upscaler.R.Zip</a>
+    </li>
+    <li>
+      <a href="homework_10.html">homework_10</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">homework_07</h1>
+<h4 class="author">Lamija Semic</h4>
+<h4 class="date">2025-05-07</h4>
+
+</div>
+
+
+<p><strong>1</strong></p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ─────
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ──── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>glimpse(iris)</code></pre>
+<pre><code>## Rows: 150
+## Columns: 5
+## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…
+## $ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…
+## $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…
+## $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…
+## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</code></pre>
+<pre class="r"><code># 150 observations with 5 variables</code></pre>
+<p><strong>2</strong></p>
+<pre class="r"><code>iris1 &lt;- subset(iris, Species %in% c(&quot;virginica&quot;, &quot;versicolor&quot;) &amp; Sepal.Length &gt; 6 &amp; Sepal.Width &gt; 2.5)
+glimpse(iris1)</code></pre>
+<pre><code>## Rows: 56
+## Columns: 5
+## $ Sepal.Length &lt;dbl&gt; 7.0, 6.4, 6.9, 6.5, 6.3, 6.6, 6.1, 6.7, 6.1, 6.1, 6.4, 6.…
+## $ Sepal.Width  &lt;dbl&gt; 3.2, 3.2, 3.1, 2.8, 3.3, 2.9, 2.9, 3.1, 2.8, 2.8, 2.9, 3.…
+## $ Petal.Length &lt;dbl&gt; 4.7, 4.5, 4.9, 4.6, 4.7, 4.6, 4.7, 4.4, 4.0, 4.7, 4.3, 4.…
+## $ Petal.Width  &lt;dbl&gt; 1.4, 1.5, 1.5, 1.5, 1.6, 1.3, 1.4, 1.4, 1.3, 1.2, 1.3, 1.…
+## $ Species      &lt;fct&gt; versicolor, versicolor, versicolor, versicolor, versicolo…</code></pre>
+<pre class="r"><code># 56 observation and 5 variables</code></pre>
+<p><strong>3</strong></p>
+<pre class="r"><code>iris2 &lt;- iris1 %&gt;% select(Species, Sepal.Length, Sepal.Width)
+print(iris2)</code></pre>
+<pre><code>##        Species Sepal.Length Sepal.Width
+## 51  versicolor          7.0         3.2
+## 52  versicolor          6.4         3.2
+## 53  versicolor          6.9         3.1
+## 55  versicolor          6.5         2.8
+## 57  versicolor          6.3         3.3
+## 59  versicolor          6.6         2.9
+## 64  versicolor          6.1         2.9
+## 66  versicolor          6.7         3.1
+## 72  versicolor          6.1         2.8
+## 74  versicolor          6.1         2.8
+## 75  versicolor          6.4         2.9
+## 76  versicolor          6.6         3.0
+## 77  versicolor          6.8         2.8
+## 78  versicolor          6.7         3.0
+## 87  versicolor          6.7         3.1
+## 92  versicolor          6.1         3.0
+## 98  versicolor          6.2         2.9
+## 101  virginica          6.3         3.3
+## 103  virginica          7.1         3.0
+## 104  virginica          6.3         2.9
+## 105  virginica          6.5         3.0
+## 106  virginica          7.6         3.0
+## 108  virginica          7.3         2.9
+## 110  virginica          7.2         3.6
+## 111  virginica          6.5         3.2
+## 112  virginica          6.4         2.7
+## 113  virginica          6.8         3.0
+## 116  virginica          6.4         3.2
+## 117  virginica          6.5         3.0
+## 118  virginica          7.7         3.8
+## 119  virginica          7.7         2.6
+## 121  virginica          6.9         3.2
+## 123  virginica          7.7         2.8
+## 124  virginica          6.3         2.7
+## 125  virginica          6.7         3.3
+## 126  virginica          7.2         3.2
+## 127  virginica          6.2         2.8
+## 128  virginica          6.1         3.0
+## 129  virginica          6.4         2.8
+## 130  virginica          7.2         3.0
+## 131  virginica          7.4         2.8
+## 132  virginica          7.9         3.8
+## 133  virginica          6.4         2.8
+## 134  virginica          6.3         2.8
+## 135  virginica          6.1         2.6
+## 136  virginica          7.7         3.0
+## 137  virginica          6.3         3.4
+## 138  virginica          6.4         3.1
+## 140  virginica          6.9         3.1
+## 141  virginica          6.7         3.1
+## 142  virginica          6.9         3.1
+## 144  virginica          6.8         3.2
+## 145  virginica          6.7         3.3
+## 146  virginica          6.7         3.0
+## 148  virginica          6.5         3.0
+## 149  virginica          6.2         3.4</code></pre>
+<pre class="r"><code># 56 observations and 3 variables</code></pre>
+<p><strong>4</strong></p>
+<pre class="r"><code>iris3&lt;-iris2 %&gt;%
+arrange(by = desc(Sepal.Length))
+head(iris3)</code></pre>
+<pre><code>##     Species Sepal.Length Sepal.Width
+## 1 virginica          7.9         3.8
+## 2 virginica          7.7         3.8
+## 3 virginica          7.7         2.6
+## 4 virginica          7.7         2.8
+## 5 virginica          7.7         3.0
+## 6 virginica          7.6         3.0</code></pre>
+<p><strong>5</strong></p>
+<pre class="r"><code>iris4&lt;-iris3 %&gt;%
+  mutate(area = Sepal.Length*Sepal.Width)
+  head(iris4)</code></pre>
+<pre><code>##     Species Sepal.Length Sepal.Width  area
+## 1 virginica          7.9         3.8 30.02
+## 2 virginica          7.7         3.8 29.26
+## 3 virginica          7.7         2.6 20.02
+## 4 virginica          7.7         2.8 21.56
+## 5 virginica          7.7         3.0 23.10
+## 6 virginica          7.6         3.0 22.80</code></pre>
+<p><strong>6</strong></p>
+<pre class="r"><code>iris5 &lt;- iris4 %&gt;%
+  summarize(
+    Average_Sepal.Length = mean(Sepal.Length),
+    Average_Sepal.Width = mean(Sepal.Width),
+    Sample_Size = n()
+)
+print(iris5)</code></pre>
+<pre><code>##   Average_Sepal.Length Average_Sepal.Width Sample_Size
+## 1             6.698214            3.041071          56</code></pre>
+<p><strong>7</strong></p>
+<pre class="r"><code>iris6 &lt;- iris4 %&gt;%
+  group_by(Species) %&gt;%
+  summarize(
+    Average_Sepal.Length = mean(Sepal.Length),
+    Average_Sepal.Width = mean(Sepal.Width),
+    Sample_Size = n()
+  )
+print(iris6)</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   Species    Average_Sepal.Length Average_Sepal.Width Sample_Size
+##   &lt;fct&gt;                     &lt;dbl&gt;               &lt;dbl&gt;       &lt;int&gt;
+## 1 versicolor                 6.48                2.99          17
+## 2 virginica                  6.79                3.06          39</code></pre>
+<p><strong>9</strong></p>
+<pre class="r"><code>iris_long &lt;- iris %&gt;%
+pivot_longer(cols = -Species, names_to = &quot;Measure&quot;, values_to = &quot;Value&quot;)
+print(iris_long)</code></pre>
+<pre><code>## # A tibble: 600 × 3
+##    Species Measure      Value
+##    &lt;fct&gt;   &lt;chr&gt;        &lt;dbl&gt;
+##  1 setosa  Sepal.Length   5.1
+##  2 setosa  Sepal.Width    3.5
+##  3 setosa  Petal.Length   1.4
+##  4 setosa  Petal.Width    0.2
+##  5 setosa  Sepal.Length   4.9
+##  6 setosa  Sepal.Width    3  
+##  7 setosa  Petal.Length   1.4
+##  8 setosa  Petal.Width    0.2
+##  9 setosa  Sepal.Length   4.7
+## 10 setosa  Sepal.Width    3.2
+## # ℹ 590 more rows</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
