@@ -275,9 +275,6 @@ $(document).ready(function () {
       <a href="homework_08.html">homework_08</a>
     </li>
     <li>
-      <a href="Upscaler.R.Zip.html">Upscaler.R.Zip</a>
-    </li>
-    <li>
       <a href="homework_10.html">homework_10</a>
     </li>
   </ul>
@@ -739,12 +736,12 @@ z &lt;- data.frame(1:1718, z)
 names(z) &lt;- list(&quot;ID&quot;, &quot;myVar&quot;)
 z &lt;- z[z$myVar&gt;0,]
 str(z)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    981 obs. of  2 variables:
-##  $ ID   : int  1 4 5 6 9 10 11 12 14 15 ...
-##  $ myVar: num  0.339 0.198 0.234 0.458 0.26 ...</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1012 obs. of  2 variables:
+##  $ ID   : int  1 2 3 6 9 10 11 14 15 16 ...
+##  $ myVar: num  0.873 0.573 1.2 0.53 1.257 ...</code></pre>
 <pre class="r"><code>summary(z$myVar)</code></pre>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.000837 0.345858 0.744683 0.873040 1.258099 3.783246</code></pre>
+## 0.003887 0.356066 0.759130 0.869584 1.282314 3.829103</code></pre>
 <p><strong>b: Plot histogram</strong></p>
 <pre class="r"><code>p1 &lt;- ggplot(data=z, aes(x=myVar, y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2) 
@@ -766,6 +763,7 @@ stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red
 <p><strong>h: Plot gamma probability density</strong></p>
 <pre class="r"><code>gammaPars &lt;- fitdistr(z$myVar,&quot;gamma&quot;)</code></pre>
 <pre><code>## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
@@ -793,6 +791,7 @@ print(p1)</code></pre>
 <p><strong>Original data probability curve</strong></p>
 <pre class="r"><code>gammaPars &lt;- fitdistr(z$myVar,&quot;gamma&quot;)</code></pre>
 <pre><code>## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
