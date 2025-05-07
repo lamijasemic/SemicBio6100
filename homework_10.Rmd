@@ -39,11 +39,9 @@ public_response <- tuesdata$public_response
 
 clean_data <- na.omit(public_response)
                   
-public_response_cleaned <- clean_data
+public_response_c <- clean_data
 
-print(public_response_cleaned)
-
-print(public_response_cleaned$film)
+print(public_response_c)
 
 
 ```
@@ -56,21 +54,21 @@ print(public_response_cleaned$film)
 ```{r}
 
 # Example structure of `public_response` dataset
-public_response <- data.frame(
+public_response_c <- data.frame(
   Film = c("Toy Story 2", "Monsters, Inc.", "Finding Nemo", "The Incredibles", "Cars",  "Ratatouille", "WALL-E", "Up", "Toy Story 3", "Cars 2", "Brave", "Monsters University", "Inside Out","The Good Dinosaur", "Finding Dory", "Cars 3", "Coco", "Incredibles 2", "Toy Story 4", "Onward"),   
   Score = c(10, 35, 60, 85, 95)  # Rotten Tomatoes scores
 )
 
 # Group scores into ranges
-public_response$Score_Range <- cut(
-  public_response$Score,
+public_response_c$Score_Range <- cut(
+  public_response_c$Score,
   breaks = c(0, 20, 40, 60, 80, 100),
   labels = c("0-20", "21-40", "41-60", "61-80", "81-100"),
   include.lowest = TRUE
 )
 
 # Count the number of films in each range
-waffle_data <- as.data.frame(table(public_response$Score_Range))
+waffle_data <- as.data.frame(table(public_response_c$Score_Range))
 names(waffle_data) <- c("Score_Range", "Count")
 print(waffle_data)
 
@@ -93,12 +91,12 @@ print(waffle_plot)
 ```
 
 
-# 2D density plot
+# 2D density plot!
 ```{r}
-ggplot(public_response, aes(x = Score)) +
+ggplot(public_response_c, aes(x = Score)) +
   geom_density(fill = "blue", alpha = 0.5) +
   labs(
-    title = "Density Plot of Rotten Tomatoes Scores",
+    title = "Rotten Tomatoes Scores",
     x = "Rotten Tomatoes Score",
     y = "Density"
   ) +
@@ -107,9 +105,22 @@ ggplot(public_response, aes(x = Score)) +
 ```
 
 
+Tree Map!
 ```{r}
+# Install the treemap package
+install.packages("treemap")
 
-print(public_response$metacritic)
+# Load the library
+library(treemap)
+
+
+
+# Create the treemap
+treemap(public_response_c,
+        index = c("Film", "Score_Range"),  # Hierarchy
+        vSize = "Score",                       # Size of rectangles
+        title = "Public Responses")             # Title
+
 
 
 
@@ -118,32 +129,15 @@ print(public_response$metacritic)
 
 
 
-
+Pie Chart
 ```{r}
-
-public_response <- data.frame(
-  Film = c("Toy Story 2", "Monsters, Inc.", "Finding Nemo", "The Incredibles", "Cars",  "Ratatouille", "WALL-E", "Up", "Toy Story 3", "Cars 2", "Brave", "Monsters University", "Inside Out","The Good Dinosaur", "Finding Dory", "Cars 3", "Coco", "Incredibles 2", "Toy Story 4", "Onward"),   
-  Score = c(10, 35, 60, 85, 95)  # Rotten Tomatoes scores
-  Metacritic
-)
-
-
-
-
-
-
-ggplot(public_response, aes(x = Score, fill = metacritic)) +
-  geom_density(alpha = 0.5) +
-  labs(
-    title = "Density Plot of Rotten Tomatoes Scores by Genre",
-    x = "Rotten Tomatoes Score",
-    y = "Density",
-    fill = "metacritic"
-  ) +
-  theme_minimal()
+# Create pie chart
+ggplot(public_response_c, aes(x = "Film", y = Score, fill = Film)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  labs(title = "Public Response") +
+  theme_void()  # Removes unnecessary axes and gridlines
 
 ```
-
-
 
 

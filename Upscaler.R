@@ -1,11 +1,3 @@
----
-title: "homework_09"
-author: "Lamija Semic"
-date: "`3/26/25`"
-output: html_document
----
-
-```{r}
 library(pracma)
 library(pryr)
 library(devtools)
@@ -79,6 +71,3 @@ ggplot(plot_data, aes(x = richness)) +
   geom_histogram(binwidth = 1, fill = "blue", color = "black", alpha = 0.7) +
   labs(title = "Histogram of Richness", x = "Richness", y = "Frequency") +
   theme_minimal()
-
-
-```
