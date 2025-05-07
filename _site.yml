@@ -22,6 +22,8 @@ navbar:
           href: homework_07.html
         - text: "homework_08"
           href: homework_08.html
+        - text: "homework_09"
+          href: homework_09.html
 
 output:
   html_document:
