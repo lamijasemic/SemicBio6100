@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Lamija Semic" />
 
+<meta name="date" content="2025-05-07" />
 
-<title>About This Website</title>
+<title>homework_10</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -290,12 +292,167 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About This Website</h1>
+<h1 class="title toc-ignore">homework_10</h1>
+<h4 class="author">Lamija Semic</h4>
+<h4 class="date">2025-05-07</h4>
 
 </div>
 
 
-<p>More about this website.</p>
+<div id="install-packages-and-load-in-data" class="section level1">
+<h1>install packages and load in data</h1>
+<pre class="r"><code>library(ggplot2)
+library(ggridges) # ridge plots
+library(ggbeeswarm) # beeswarm plots
+library(GGally) # parallel coordinates plots</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre class="r"><code>library(ggpie) # pie charts
+library(ggmosaic) # mosaic plots</code></pre>
+<pre><code>## 
+## Attaching package: &#39;ggmosaic&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:GGally&#39;:
+## 
+##     happy</code></pre>
+<pre class="r"><code>library(scatterpie) # scatter pies on map</code></pre>
+<pre><code>## scatterpie v0.2.4 Learn more at https://yulab-smu.top/</code></pre>
+<pre class="r"><code>library(waffle) # for waffle plots
+library(DescTools) # for converting table to long
+library(treemap) # for tree maps
+
+
+
+
+
+# Using R
+# Option 1: tidytuesdayR R package 
+install.packages(&quot;tidytuesdayR&quot;)</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/zl/6grbynh575vc64243h95lqhh0000gn/T//RtmpbPHfqS/downloaded_packages</code></pre>
+<pre class="r"><code>tuesdata &lt;- tidytuesdayR::tt_load(&#39;2025-03-11&#39;)</code></pre>
+<pre><code>## ---- Compiling #TidyTuesday Information
+## for 2025-03-11 ----</code></pre>
+<pre><code>## --- There are 2 files available ---
+## 
+## 
+## ── Downloading files ─────────────────────
+## 
+##   1 of 2: &quot;pixar_films.csv&quot;
+##   2 of 2: &quot;public_response.csv&quot;</code></pre>
+<pre class="r"><code>public_response &lt;- tuesdata$public_response</code></pre>
+</div>
+<div id="clean-data" class="section level1">
+<h1>clean data</h1>
+<pre class="r"><code>clean_data &lt;- na.omit(public_response)
+                  
+public_response_c &lt;- clean_data
+
+print(public_response_c)</code></pre>
+<pre><code>## # A tibble: 20 × 5
+##    film                rotten_tomatoes metacritic cinema_score critics_choice
+##    &lt;chr&gt;                         &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+##  1 Toy Story 2                     100         88 A+                      100
+##  2 Monsters, Inc.                   96         79 A+                       92
+##  3 Finding Nemo                     99         90 A+                       97
+##  4 The Incredibles                  97         90 A+                       88
+##  5 Cars                             74         73 A                        89
+##  6 Ratatouille                      96         96 A                        91
+##  7 WALL-E                           95         95 A                        90
+##  8 Up                               98         88 A+                       95
+##  9 Toy Story 3                      98         92 A                        97
+## 10 Cars 2                           40         57 A-                       67
+## 11 Brave                            78         69 A                        81
+## 12 Monsters University              80         65 A                        79
+## 13 Inside Out                       98         94 A                        93
+## 14 The Good Dinosaur                76         66 A                        75
+## 15 Finding Dory                     94         77 A                        89
+## 16 Cars 3                           69         59 A                        66
+## 17 Coco                             97         81 A+                       89
+## 18 Incredibles 2                    93         80 A+                       86
+## 19 Toy Story 4                      97         84 A                        94
+## 20 Onward                           88         61 A-                       79</code></pre>
+</div>
+<div id="waffleplot" class="section level1">
+<h1>Waffleplot!</h1>
+<pre class="r"><code># Example structure of `public_response` dataset
+public_response_c &lt;- data.frame(
+  Film = c(&quot;Toy Story 2&quot;, &quot;Monsters, Inc.&quot;, &quot;Finding Nemo&quot;, &quot;The Incredibles&quot;, &quot;Cars&quot;,  &quot;Ratatouille&quot;, &quot;WALL-E&quot;, &quot;Up&quot;, &quot;Toy Story 3&quot;, &quot;Cars 2&quot;, &quot;Brave&quot;, &quot;Monsters University&quot;, &quot;Inside Out&quot;,&quot;The Good Dinosaur&quot;, &quot;Finding Dory&quot;, &quot;Cars 3&quot;, &quot;Coco&quot;, &quot;Incredibles 2&quot;, &quot;Toy Story 4&quot;, &quot;Onward&quot;),   
+  Score = c(10, 35, 60, 85, 95)  # Rotten Tomatoes scores
+)
+
+# Group scores into ranges
+public_response_c$Score_Range &lt;- cut(
+  public_response_c$Score,
+  breaks = c(0, 20, 40, 60, 80, 100),
+  labels = c(&quot;0-20&quot;, &quot;21-40&quot;, &quot;41-60&quot;, &quot;61-80&quot;, &quot;81-100&quot;),
+  include.lowest = TRUE
+)
+
+# Count the number of films in each range
+waffle_data &lt;- as.data.frame(table(public_response_c$Score_Range))
+names(waffle_data) &lt;- c(&quot;Score_Range&quot;, &quot;Count&quot;)
+print(waffle_data)</code></pre>
+<pre><code>##   Score_Range Count
+## 1        0-20     4
+## 2       21-40     4
+## 3       41-60     4
+## 4       61-80     0
+## 5      81-100     8</code></pre>
+<pre class="r"><code>library(waffle)
+
+# Convert the data into a named vector for the waffle plot
+waffle_vector &lt;- setNames(waffle_data$Count, waffle_data$Score_Range)
+
+# Create the waffle plot
+waffle_plot &lt;- waffle(
+  parts = waffle_vector,
+  rows = 10,  # Number of rows in the waffle grid
+  colors = c(&quot;#D73027&quot;, &quot;#FC8D59&quot;, &quot;#FEE08B&quot;, &quot;#D9EF8B&quot;, &quot;#91CF60&quot;),
+  title = &quot;Rotten Tomatoes Scores Distribution&quot;
+)
+
+print(waffle_plot)</code></pre>
+<p><img src="homework_10_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="d-density-plot" class="section level1">
+<h1>2D density plot!</h1>
+<pre class="r"><code>ggplot(public_response_c, aes(x = Score)) +
+  geom_density(fill = &quot;blue&quot;, alpha = 0.5) +
+  labs(
+    title = &quot;Rotten Tomatoes Scores&quot;,
+    x = &quot;Rotten Tomatoes Score&quot;,
+    y = &quot;Density&quot;
+  ) +
+  theme_minimal()</code></pre>
+<p><img src="homework_10_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Tree Map!</p>
+<pre class="r"><code># Install the treemap package
+install.packages(&quot;treemap&quot;)</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/zl/6grbynh575vc64243h95lqhh0000gn/T//RtmpbPHfqS/downloaded_packages</code></pre>
+<pre class="r"><code># Load the library
+library(treemap)
+
+
+
+# Create the treemap
+treemap(public_response_c,
+        index = c(&quot;Film&quot;, &quot;Score_Range&quot;),  # Hierarchy
+        vSize = &quot;Score&quot;,                       # Size of rectangles
+        title = &quot;Public Responses&quot;)             # Title</code></pre>
+<p><img src="homework_10_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Pie Chart</p>
+<pre class="r"><code># Create pie chart
+ggplot(public_response_c, aes(x = &quot;Film&quot;, y = Score, fill = Film)) +
+  geom_bar(stat = &quot;identity&quot;, width = 1) +
+  coord_polar(&quot;y&quot;, start = 0) +
+  labs(title = &quot;Public Response&quot;) +
+  theme_void()  # Removes unnecessary axes and gridlines</code></pre>
+<p><img src="homework_10_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
 
 
 
