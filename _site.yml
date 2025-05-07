@@ -24,7 +24,5 @@ navbar:
           href: homework_08.html
         - text: "homework_09"
           href: homework_09.html
-
-output:
-  html_document:
-    css: "darkly.min.css"
+        - text: "homework_10"
+          href: homework_10.html
