@@ -10,20 +10,6 @@ title: "Embed ZIP File"
 output: html_document
 ---
 
-## Download the ZIP File
 
-
-[Download the ZIP file](Upscaler.R.Zip)
-
-
-
-## Display the Contents of the ZIP File
-
-```{r}
-# Display the contents of the zip file
-unzip("Upscaler.R.Zip", list = TRUE)
-```
-
-
-
+[Download the ZIP file](Upscaler.R.zip)
 

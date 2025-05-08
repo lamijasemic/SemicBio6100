@@ -305,39 +305,58 @@ $(document).ready(function () {
 <pre class="r"><code>random_value &lt;- runif(1, min=3, max=10)
 n_dims &lt;- as.integer(random_value)
 print(n_dims)</code></pre>
-<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 6</code></pre>
 <pre class="r"><code>my_vec &lt;- 1:n_dims^2
 
 sample(x=my_vec)</code></pre>
-<pre><code>## [1] 5 8 2 1 7 6 9 4 3</code></pre>
+<pre><code>##  [1]  1 16 25 34 30 31  3 14  7 24 27 12 33 11 32 22 28 19 23 36 18 21  9 10 17
+## [26] 35  4 20  5  8 26 29  6 13  2 15</code></pre>
 <pre class="r"><code>m &lt;- matrix(data=my_vec,nrow=n_dims)
 print(m)</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    7   13   19   25   31
+## [2,]    2    8   14   20   26   32
+## [3,]    3    9   15   21   27   33
+## [4,]    4   10   16   22   28   34
+## [5,]    5   11   17   23   29   35
+## [6,]    6   12   18   24   30   36</code></pre>
 <pre class="r"><code>transposed_matrix &lt;- t(m)
 print(transposed_matrix)</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    2    3
-## [2,]    4    5    6
-## [3,]    7    8    9</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    2    3    4    5    6
+## [2,]    7    8    9   10   11   12
+## [3,]   13   14   15   16   17   18
+## [4,]   19   20   21   22   23   24
+## [5,]   25   26   27   28   29   30
+## [6,]   31   32   33   34   35   36</code></pre>
 <pre class="r"><code># switches order of columns and rows
 
 rowSums(m)</code></pre>
-<pre><code>## [1] 12 15 18</code></pre>
+<pre><code>## [1]  96 102 108 114 120 126</code></pre>
 <pre class="r"><code>rowMeans(m)</code></pre>
-<pre><code>## [1] 4 5 6</code></pre>
+<pre><code>## [1] 16 17 18 19 20 21</code></pre>
 <pre class="r"><code>eigen(m)</code></pre>
 <pre><code>## eigen() decomposition
 ## $values
-## [1]  1.611684e+01 -1.116844e+00 -5.700691e-16
+## [1]  1.164118e+02+0.000000e+00i -5.411822e+00+0.000000e+00i
+## [3]  4.660296e-15+0.000000e+00i  6.417128e-16+1.832109e-15i
+## [5]  6.417128e-16-1.832109e-15i -1.063121e-15+0.000000e+00i
 ## 
 ## $vectors
-##            [,1]       [,2]       [,3]
-## [1,] -0.4645473 -0.8829060  0.4082483
-## [2,] -0.5707955 -0.2395204 -0.8164966
-## [3,] -0.6770438  0.4038651  0.4082483</code></pre>
+##              [,1]           [,2]          [,3]                    [,4]
+## [1,] 0.3542745+0i -0.71909760+0i -0.1342200+0i  0.09720349-0.39400738i
+## [2,] 0.3752350+0i -0.50772079+0i  0.4622665+0i -0.05245290+0.05573989i
+## [3,] 0.3961956+0i -0.29634399+0i -0.5823752+0i -0.15250865+0.42881785i
+## [4,] 0.4171561+0i -0.08496719+0i  0.4864639+0i  0.34950817+0.23031189i
+## [5,] 0.4381167+0i  0.12640962+0i -0.4037682+0i -0.51769625+0.00000000i
+## [6,] 0.4590772+0i  0.33778642+0i  0.1716330+0i  0.27594614-0.32086225i
+##                         [,5]           [,6]
+## [1,]  0.09720349+0.39400738i  0.51431380+0i
+## [2,] -0.05245290-0.05573989i -0.23908480+0i
+## [3,] -0.15250865-0.42881785i -0.76232310+0i
+## [4,]  0.34950817-0.23031189i  0.26791247+0i
+## [5,] -0.51769625+0.00000000i  0.13591457+0i
+## [6,]  0.27594614+0.32086225i  0.08326706+0i</code></pre>
 <pre class="r"><code># $values: these numbers are all eigen values of the matrix.
 
 # $vectors: each column of these numbers are eigen vectors, that correspond with the eigen values.
@@ -351,30 +370,30 @@ typeof(-0.4645473)</code></pre>
 <p><strong>2</strong></p>
 <pre class="r"><code>my_matrix &lt;- matrix(runif(16), nrow=4, ncol=4)
 print(my_matrix)</code></pre>
-<pre><code>##             [,1]      [,2]       [,3]      [,4]
-## [1,] 0.008758379 0.2519579 0.69252804 0.5707827
-## [2,] 0.403751389 0.5148275 0.08185098 0.4572715
-## [3,] 0.688084084 0.5229418 0.13819526 0.9075655
-## [4,] 0.980474542 0.8225310 0.22855217 0.6839157</code></pre>
+<pre><code>##            [,1]      [,2]       [,3]       [,4]
+## [1,] 0.05525524 0.2327760 0.46948318 0.04414688
+## [2,] 0.63524202 0.1772380 0.26800263 0.39908561
+## [3,] 0.92838723 0.3893404 0.38646314 0.51099208
+## [4,] 0.82265657 0.1946595 0.07818348 0.36814108</code></pre>
 <pre class="r"><code>my_logical &lt;- runif(100) 
 my_logical &lt;- sample(c(TRUE, FALSE), 100, replace = TRUE)
 print(my_logical)</code></pre>
-<pre><code>##   [1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
-##  [13] FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
-##  [25] FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
-##  [37] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [49]  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
-##  [61] FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE
-##  [73] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE
-##  [85]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE
-##  [97] FALSE FALSE  TRUE  TRUE</code></pre>
+<pre><code>##   [1] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+##  [13] FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+##  [25]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE
+##  [37]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE
+##  [49] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+##  [61]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
+##  [73] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+##  [85]  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+##  [97]  TRUE  TRUE FALSE FALSE</code></pre>
 <pre class="r"><code>my_letters &lt;- sample(letters, 26)
 print(my_letters)</code></pre>
-<pre><code>##  [1] &quot;d&quot; &quot;o&quot; &quot;v&quot; &quot;h&quot; &quot;z&quot; &quot;r&quot; &quot;p&quot; &quot;j&quot; &quot;s&quot; &quot;g&quot; &quot;t&quot; &quot;b&quot; &quot;n&quot; &quot;y&quot; &quot;c&quot; &quot;l&quot; &quot;i&quot; &quot;e&quot; &quot;a&quot;
-## [20] &quot;w&quot; &quot;x&quot; &quot;u&quot; &quot;m&quot; &quot;k&quot; &quot;f&quot; &quot;q&quot;</code></pre>
+<pre><code>##  [1] &quot;k&quot; &quot;a&quot; &quot;v&quot; &quot;f&quot; &quot;j&quot; &quot;g&quot; &quot;d&quot; &quot;t&quot; &quot;q&quot; &quot;h&quot; &quot;u&quot; &quot;n&quot; &quot;z&quot; &quot;b&quot; &quot;o&quot; &quot;x&quot; &quot;s&quot; &quot;i&quot; &quot;p&quot;
+## [20] &quot;e&quot; &quot;w&quot; &quot;y&quot; &quot;r&quot; &quot;c&quot; &quot;m&quot; &quot;l&quot;</code></pre>
 <pre class="r"><code>new_list &lt;- c(my_matrix[2,2], my_logical[2], my_letters[1])
 print(new_list)</code></pre>
-<pre><code>## [1] &quot;0.514827470993623&quot; &quot;FALSE&quot;             &quot;d&quot;</code></pre>
+<pre><code>## [1] &quot;0.17723796935752&quot; &quot;FALSE&quot;            &quot;k&quot;</code></pre>
 <pre class="r"><code>typeof(my_matrix[2,2])</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <pre class="r"><code>typeof(my_logical[2])</code></pre>
@@ -386,48 +405,48 @@ print(new_list)</code></pre>
 <p><strong>3</strong></p>
 <pre class="r"><code>my_unis &lt;- runif(26, min=0, max=10)
 print(my_unis)</code></pre>
-<pre><code>##  [1] 3.6136422 0.1020787 1.9168627 8.1879405 1.2123000 4.5348172 7.9793924
-##  [8] 5.7034127 4.2286169 5.2555768 6.3537292 7.3550227 6.7874646 0.7541739
-## [15] 5.5764767 0.1579140 0.3931241 7.5590381 8.9084839 5.3176430 7.0034599
-## [22] 3.4555720 8.7680814 9.6210424 6.8301913 4.4614631</code></pre>
+<pre><code>##  [1] 7.2908311 3.0178946 5.2572010 4.0862082 0.7949235 2.7962733 7.8459077
+##  [8] 5.2157845 7.1220618 1.1126303 8.1055671 5.7597731 2.3818778 7.6185404
+## [15] 0.4865937 7.8139811 1.0364295 6.8040039 6.1574352 4.4734005 3.4184800
+## [22] 3.8951768 4.1176272 1.9274437 4.9674582 0.1987173</code></pre>
 <pre class="r"><code>my_letters &lt;- sample(LETTERS, 26)
 print(my_letters)</code></pre>
-<pre><code>##  [1] &quot;P&quot; &quot;X&quot; &quot;O&quot; &quot;H&quot; &quot;F&quot; &quot;B&quot; &quot;C&quot; &quot;Q&quot; &quot;I&quot; &quot;Z&quot; &quot;S&quot; &quot;V&quot; &quot;E&quot; &quot;W&quot; &quot;Y&quot; &quot;R&quot; &quot;K&quot; &quot;L&quot; &quot;N&quot;
-## [20] &quot;D&quot; &quot;G&quot; &quot;U&quot; &quot;A&quot; &quot;J&quot; &quot;M&quot; &quot;T&quot;</code></pre>
+<pre><code>##  [1] &quot;N&quot; &quot;T&quot; &quot;D&quot; &quot;R&quot; &quot;K&quot; &quot;X&quot; &quot;G&quot; &quot;Y&quot; &quot;Q&quot; &quot;B&quot; &quot;U&quot; &quot;O&quot; &quot;E&quot; &quot;H&quot; &quot;J&quot; &quot;M&quot; &quot;C&quot; &quot;S&quot; &quot;A&quot;
+## [20] &quot;L&quot; &quot;V&quot; &quot;F&quot; &quot;I&quot; &quot;P&quot; &quot;Z&quot; &quot;W&quot;</code></pre>
 <pre class="r"><code>data_frame &lt;- matrix(c(my_unis, my_letters), nrow=26, ncol=2)
 print(data_frame)  </code></pre>
 <pre><code>##       [,1]                [,2]
-##  [1,] &quot;3.61364224459976&quot;  &quot;P&quot; 
-##  [2,] &quot;0.10207868181169&quot;  &quot;X&quot; 
-##  [3,] &quot;1.91686267731711&quot;  &quot;O&quot; 
-##  [4,] &quot;8.18794049089774&quot;  &quot;H&quot; 
-##  [5,] &quot;1.212299966719&quot;    &quot;F&quot; 
-##  [6,] &quot;4.53481722390279&quot;  &quot;B&quot; 
-##  [7,] &quot;7.97939235344529&quot;  &quot;C&quot; 
-##  [8,] &quot;5.70341269951314&quot;  &quot;Q&quot; 
-##  [9,] &quot;4.22861685510725&quot;  &quot;I&quot; 
-## [10,] &quot;5.2555768052116&quot;   &quot;Z&quot; 
-## [11,] &quot;6.35372915072367&quot;  &quot;S&quot; 
-## [12,] &quot;7.35502272378653&quot;  &quot;V&quot; 
-## [13,] &quot;6.78746460238472&quot;  &quot;E&quot; 
-## [14,] &quot;0.754173879977316&quot; &quot;W&quot; 
-## [15,] &quot;5.57647674577311&quot;  &quot;Y&quot; 
-## [16,] &quot;0.157914005685598&quot; &quot;R&quot; 
-## [17,] &quot;0.393124110996723&quot; &quot;K&quot; 
-## [18,] &quot;7.55903807701543&quot;  &quot;L&quot; 
-## [19,] &quot;8.908483881969&quot;    &quot;N&quot; 
-## [20,] &quot;5.31764296814799&quot;  &quot;D&quot; 
-## [21,] &quot;7.00345986755565&quot;  &quot;G&quot; 
-## [22,] &quot;3.4555719839409&quot;   &quot;U&quot; 
-## [23,] &quot;8.76808144384995&quot;  &quot;A&quot; 
-## [24,] &quot;9.62104239268228&quot;  &quot;J&quot; 
-## [25,] &quot;6.83019131422043&quot;  &quot;M&quot; 
-## [26,] &quot;4.46146306116134&quot;  &quot;T&quot;</code></pre>
+##  [1,] &quot;7.29083106387407&quot;  &quot;N&quot; 
+##  [2,] &quot;3.01789458375424&quot;  &quot;T&quot; 
+##  [3,] &quot;5.25720101082698&quot;  &quot;D&quot; 
+##  [4,] &quot;4.08620822476223&quot;  &quot;R&quot; 
+##  [5,] &quot;0.794923468492925&quot; &quot;K&quot; 
+##  [6,] &quot;2.7962732850574&quot;   &quot;X&quot; 
+##  [7,] &quot;7.84590768162161&quot;  &quot;G&quot; 
+##  [8,] &quot;5.21578451152891&quot;  &quot;Y&quot; 
+##  [9,] &quot;7.12206181138754&quot;  &quot;Q&quot; 
+## [10,] &quot;1.11263029510155&quot;  &quot;B&quot; 
+## [11,] &quot;8.1055671419017&quot;   &quot;U&quot; 
+## [12,] &quot;5.75977314263582&quot;  &quot;O&quot; 
+## [13,] &quot;2.38187778741121&quot;  &quot;E&quot; 
+## [14,] &quot;7.61854040203616&quot;  &quot;H&quot; 
+## [15,] &quot;0.486593653913587&quot; &quot;J&quot; 
+## [16,] &quot;7.81398111255839&quot;  &quot;M&quot; 
+## [17,] &quot;1.03642949368805&quot;  &quot;C&quot; 
+## [18,] &quot;6.80400387383997&quot;  &quot;S&quot; 
+## [19,] &quot;6.15743519971147&quot;  &quot;A&quot; 
+## [20,] &quot;4.4734005164355&quot;   &quot;L&quot; 
+## [21,] &quot;3.41848001116887&quot;  &quot;V&quot; 
+## [22,] &quot;3.89517677482218&quot;  &quot;F&quot; 
+## [23,] &quot;4.11762722535059&quot;  &quot;I&quot; 
+## [24,] &quot;1.92744371946901&quot;  &quot;P&quot; 
+## [25,] &quot;4.96745822019875&quot;  &quot;Z&quot; 
+## [26,] &quot;0.198717338498682&quot; &quot;W&quot;</code></pre>
 <pre class="r"><code>data_frame[sample(1:nrow(data_frame), 4), 1] &lt;- NA
 which(!complete.cases(data_frame))</code></pre>
-<pre><code>## [1] 10 14 18 25</code></pre>
+<pre><code>## [1]  4  5 21 25</code></pre>
 <pre class="r"><code>str(data_frame)</code></pre>
-<pre><code>##  chr [1:26, 1:2] &quot;3.61364224459976&quot; &quot;0.10207868181169&quot; &quot;1.91686267731711&quot; ...</code></pre>
+<pre><code>##  chr [1:26, 1:2] &quot;7.29083106387407&quot; &quot;3.01789458375424&quot; &quot;5.25720101082698&quot; ...</code></pre>
 <pre class="r"><code>my_letters_sorted &lt;- sort(my_letters)
 print(my_letters_sorted)</code></pre>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
@@ -435,32 +454,32 @@ print(my_letters_sorted)</code></pre>
 <pre class="r"><code>data_frame &lt;- matrix(c(my_unis, my_letters_sorted), nrow=26, ncol=2)
 print(data_frame)  </code></pre>
 <pre><code>##       [,1]                [,2]
-##  [1,] &quot;3.61364224459976&quot;  &quot;A&quot; 
-##  [2,] &quot;0.10207868181169&quot;  &quot;B&quot; 
-##  [3,] &quot;1.91686267731711&quot;  &quot;C&quot; 
-##  [4,] &quot;8.18794049089774&quot;  &quot;D&quot; 
-##  [5,] &quot;1.212299966719&quot;    &quot;E&quot; 
-##  [6,] &quot;4.53481722390279&quot;  &quot;F&quot; 
-##  [7,] &quot;7.97939235344529&quot;  &quot;G&quot; 
-##  [8,] &quot;5.70341269951314&quot;  &quot;H&quot; 
-##  [9,] &quot;4.22861685510725&quot;  &quot;I&quot; 
-## [10,] &quot;5.2555768052116&quot;   &quot;J&quot; 
-## [11,] &quot;6.35372915072367&quot;  &quot;K&quot; 
-## [12,] &quot;7.35502272378653&quot;  &quot;L&quot; 
-## [13,] &quot;6.78746460238472&quot;  &quot;M&quot; 
-## [14,] &quot;0.754173879977316&quot; &quot;N&quot; 
-## [15,] &quot;5.57647674577311&quot;  &quot;O&quot; 
-## [16,] &quot;0.157914005685598&quot; &quot;P&quot; 
-## [17,] &quot;0.393124110996723&quot; &quot;Q&quot; 
-## [18,] &quot;7.55903807701543&quot;  &quot;R&quot; 
-## [19,] &quot;8.908483881969&quot;    &quot;S&quot; 
-## [20,] &quot;5.31764296814799&quot;  &quot;T&quot; 
-## [21,] &quot;7.00345986755565&quot;  &quot;U&quot; 
-## [22,] &quot;3.4555719839409&quot;   &quot;V&quot; 
-## [23,] &quot;8.76808144384995&quot;  &quot;W&quot; 
-## [24,] &quot;9.62104239268228&quot;  &quot;X&quot; 
-## [25,] &quot;6.83019131422043&quot;  &quot;Y&quot; 
-## [26,] &quot;4.46146306116134&quot;  &quot;Z&quot;</code></pre>
+##  [1,] &quot;7.29083106387407&quot;  &quot;A&quot; 
+##  [2,] &quot;3.01789458375424&quot;  &quot;B&quot; 
+##  [3,] &quot;5.25720101082698&quot;  &quot;C&quot; 
+##  [4,] &quot;4.08620822476223&quot;  &quot;D&quot; 
+##  [5,] &quot;0.794923468492925&quot; &quot;E&quot; 
+##  [6,] &quot;2.7962732850574&quot;   &quot;F&quot; 
+##  [7,] &quot;7.84590768162161&quot;  &quot;G&quot; 
+##  [8,] &quot;5.21578451152891&quot;  &quot;H&quot; 
+##  [9,] &quot;7.12206181138754&quot;  &quot;I&quot; 
+## [10,] &quot;1.11263029510155&quot;  &quot;J&quot; 
+## [11,] &quot;8.1055671419017&quot;   &quot;K&quot; 
+## [12,] &quot;5.75977314263582&quot;  &quot;L&quot; 
+## [13,] &quot;2.38187778741121&quot;  &quot;M&quot; 
+## [14,] &quot;7.61854040203616&quot;  &quot;N&quot; 
+## [15,] &quot;0.486593653913587&quot; &quot;O&quot; 
+## [16,] &quot;7.81398111255839&quot;  &quot;P&quot; 
+## [17,] &quot;1.03642949368805&quot;  &quot;Q&quot; 
+## [18,] &quot;6.80400387383997&quot;  &quot;R&quot; 
+## [19,] &quot;6.15743519971147&quot;  &quot;S&quot; 
+## [20,] &quot;4.4734005164355&quot;   &quot;T&quot; 
+## [21,] &quot;3.41848001116887&quot;  &quot;U&quot; 
+## [22,] &quot;3.89517677482218&quot;  &quot;V&quot; 
+## [23,] &quot;4.11762722535059&quot;  &quot;W&quot; 
+## [24,] &quot;1.92744371946901&quot;  &quot;X&quot; 
+## [25,] &quot;4.96745822019875&quot;  &quot;Y&quot; 
+## [26,] &quot;0.198717338498682&quot; &quot;Z&quot;</code></pre>
 
 
 
