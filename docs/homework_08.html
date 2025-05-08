@@ -275,6 +275,9 @@ $(document).ready(function () {
       <a href="homework_08.html">homework_08</a>
     </li>
     <li>
+      <a href="Upscaler.R.zip.html">Upscaler.R.zip</a>
+    </li>
+    <li>
       <a href="homework_10.html">homework_10</a>
     </li>
   </ul>
@@ -736,12 +739,12 @@ z &lt;- data.frame(1:1718, z)
 names(z) &lt;- list(&quot;ID&quot;, &quot;myVar&quot;)
 z &lt;- z[z$myVar&gt;0,]
 str(z)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    997 obs. of  2 variables:
-##  $ ID   : int  1 2 5 6 7 8 9 11 13 14 ...
-##  $ myVar: num  1.136 1.276 0.213 1.593 0.113 ...</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1005 obs. of  2 variables:
+##  $ ID   : int  3 5 6 9 10 11 12 14 15 16 ...
+##  $ myVar: num  1.359 0.614 1.026 1.463 1.133 ...</code></pre>
 <pre class="r"><code>summary(z$myVar)</code></pre>
-<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.000276 0.358933 0.730779 0.848779 1.200929 4.433105</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00042 0.37704 0.77854 0.89223 1.30614 3.27502</code></pre>
 <p><strong>b: Plot histogram</strong></p>
 <pre class="r"><code>p1 &lt;- ggplot(data=z, aes(x=myVar, y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2) 

@@ -23,7 +23,7 @@ navbar:
         - text: "homework_08"
           href: homework_08.html
         - text: "Upscaler.R.zip"
-          href: Upscaler.R.zip.html
+          href: <a"Upscaler.R.zip" download</a>
         - text: "homework_10"
           href: homework_10.html
 
